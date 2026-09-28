@@ -23,7 +23,7 @@
     .custom-scrollbar::-webkit-scrollbar-thumb:hover {
       background: #94a3b8;
     }
-    /* Các lớp highlight trong suốt, bảo đảm chữ luôn sắc nét */
+    /* Các lớp highlight màu pastel trong suốt, không làm mờ chữ */
     .hl-yellow {
       background-color: rgba(254, 240, 138, 0.75);
       border-radius: 2px;
@@ -72,7 +72,7 @@
     </div>
   </header>
 
-  <!-- Container -->
+  <!-- Khung nội dung chính -->
   <div class="max-w-7xl mx-auto px-4 py-4 flex-1 w-full grid grid-cols-1 lg:grid-cols-12 gap-5 relative">
     
     <!-- Sidebar Menu 18 Bài Tập -->
@@ -88,18 +88,18 @@
           </button>
         </div>
         <div id="activity-menu" class="flex-1 overflow-y-auto p-2 space-y-1.5 custom-scrollbar text-xs">
-          <!-- Render tự động bằng JS -->
+          <!-- Render danh sách qua JS -->
         </div>
       </div>
     </aside>
 
-    <!-- Khu vực làm bài chính -->
+    <!-- Khu vực 2 cột làm bài -->
     <main class="lg:col-span-9 grid grid-cols-1 xl:grid-cols-12 gap-5">
       
-      <!-- CỘT TRÁI: Bài đọc, Audio AI, Nút Dịch, Công cụ Highlight -->
-      <section class="xl:col-span-7 bg-white rounded-2xl shadow-sm border border-slate-200 p-4 md:p-5 flex flex-col h-[calc(100vh-100px)] sticky top-20 relative">
+      <!-- CỘT TRÁI: BÀI ĐỌC (KÈM HIGHLIGHT TRÁI) -->
+      <section id="left-column-section" class="xl:col-span-7 bg-white rounded-2xl shadow-sm border border-slate-200 p-4 md:p-5 flex flex-col h-[calc(100vh-100px)] sticky top-20 relative">
         
-        <!-- Toolbar -->
+        <!-- Toolbar Cột Trái -->
         <div class="pb-3 mb-3 border-b border-slate-100 flex flex-wrap items-center justify-between gap-2 bg-slate-50/80 p-2.5 rounded-xl border border-slate-200/60">
           <div class="flex items-center space-x-1.5">
             <button id="btn-audio-play" onclick="toggleAudio()" class="px-2.5 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-xs font-semibold transition flex items-center gap-1.5 shadow-sm">
@@ -117,8 +117,8 @@
           </div>
           
           <div class="flex items-center space-x-2">
-            <button onclick="clearAllHighlights()" class="px-2.5 py-1.5 bg-white border border-rose-200 text-rose-600 hover:bg-rose-50 rounded-lg text-xs font-semibold transition flex items-center gap-1 shadow-sm" title="Xóa toàn bộ highlight trong bài">
-              <i class="fa-solid fa-eraser"></i> Xóa Highlight
+            <button onclick="clearLeftHighlights()" class="px-2.5 py-1.5 bg-white border border-rose-200 text-rose-600 hover:bg-rose-50 rounded-lg text-xs font-semibold transition flex items-center gap-1 shadow-sm" title="Xóa toàn bộ highlight bài đọc">
+              <i class="fa-solid fa-eraser"></i> Xóa HL Bài Đọc
             </button>
             <button onclick="toggleTranslation()" class="px-2.5 py-1.5 bg-white border border-indigo-200 text-indigo-700 hover:bg-indigo-50 rounded-lg text-xs font-semibold transition flex items-center gap-1.5 shadow-sm">
               <i class="fa-solid fa-language text-indigo-600"></i>
@@ -127,51 +127,77 @@
           </div>
         </div>
 
-        <!-- Tooltip nổi Highlight khi bôi đen chuột -->
-        <div id="highlight-toolbar" class="hidden absolute z-50 bg-slate-900 text-white px-2.5 py-1.5 rounded-xl shadow-xl flex items-center gap-2 border border-slate-700 text-xs transition-opacity duration-200">
-          <span class="text-[11px] text-slate-400 font-medium">Bút dạ:</span>
-          <button onclick="applyHighlight('hl-yellow')" class="w-5 h-5 rounded-full bg-yellow-300 hover:scale-110 border border-white/50 transition"></button>
-          <button onclick="applyHighlight('hl-green')" class="w-5 h-5 rounded-full bg-emerald-300 hover:scale-110 border border-white/50 transition"></button>
-          <button onclick="applyHighlight('hl-cyan')" class="w-5 h-5 rounded-full bg-sky-300 hover:scale-110 border border-white/50 transition"></button>
-          <button onclick="applyHighlight('hl-pink')" class="w-5 h-5 rounded-full bg-pink-300 hover:scale-110 border border-white/50 transition"></button>
+        <!-- Tooltip nổi Highlight cho Cột Trái -->
+        <div id="left-hl-toolbar" class="hidden absolute z-50 bg-slate-900 text-white px-2.5 py-1.5 rounded-xl shadow-xl flex items-center gap-2 border border-slate-700 text-xs transition-opacity duration-200">
+          <span class="text-[11px] text-slate-400 font-medium">Tô bài đọc:</span>
+          <button onclick="applyHighlight('left', 'hl-yellow')" class="w-5 h-5 rounded-full bg-yellow-300 hover:scale-110 border border-white/50 transition"></button>
+          <button onclick="applyHighlight('left', 'hl-green')" class="w-5 h-5 rounded-full bg-emerald-300 hover:scale-110 border border-white/50 transition"></button>
+          <button onclick="applyHighlight('left', 'hl-cyan')" class="w-5 h-5 rounded-full bg-sky-300 hover:scale-110 border border-white/50 transition"></button>
+          <button onclick="applyHighlight('left', 'hl-pink')" class="w-5 h-5 rounded-full bg-pink-300 hover:scale-110 border border-white/50 transition"></button>
           <div class="h-3.5 w-px bg-slate-700 mx-0.5"></div>
-          <button onclick="removeSelectedHighlight()" class="text-rose-400 hover:text-rose-300 text-xs flex items-center gap-1 px-1">
+          <button onclick="removeSelectedHighlight('left')" class="text-rose-400 hover:text-rose-300 text-xs flex items-center gap-1 px-1">
             <i class="fa-solid fa-trash-can text-[11px]"></i> Xóa
           </button>
         </div>
 
-        <!-- Hướng dẫn nhanh dùng bút highlight -->
         <div class="text-[11px] text-slate-400 mb-1 flex items-center gap-1.5 px-1">
           <i class="fa-solid fa-highlighter text-amber-500"></i> 
-          <span>Mẹo: Dùng chuột <strong>bôi đen chữ</strong> trong bài để chọn màu đánh dấu tiện lợi.</span>
+          <span>Bôi đen chữ trong bài đọc để chọn màu đánh dấu.</span>
         </div>
 
         <!-- Nội dung Passage -->
         <div id="passage-container" class="overflow-y-auto pr-2 custom-scrollbar space-y-4 text-slate-700 text-sm leading-relaxed select-text">
-          <!-- Render tự động bằng JS -->
+          <!-- Render bài đọc qua JS -->
         </div>
       </section>
 
-      <!-- CỘT PHẢI: Tabs Quiz & Từ Vựng -->
-      <section class="xl:col-span-5 bg-white rounded-2xl shadow-sm border border-slate-200 flex flex-col h-[calc(100vh-100px)] sticky top-20 overflow-hidden">
+      <!-- CỘT PHẢI: CÂU HỎI & PARAPHRASE (KÈM HIGHLIGHT PHẢI) -->
+      <section id="right-column-section" class="xl:col-span-5 bg-white rounded-2xl shadow-sm border border-slate-200 flex flex-col h-[calc(100vh-100px)] sticky top-20 overflow-hidden relative">
+        
         <!-- Tab Headers -->
-        <div class="flex border-b border-slate-200 bg-slate-50">
-          <button id="tab-btn-quiz" onclick="switchTab('quiz')" class="flex-1 py-3 px-2 text-center font-bold text-xs md:text-sm border-b-2 border-indigo-600 text-indigo-700 flex items-center justify-center gap-1.5 transition">
-            <i class="fa-solid fa-list-check"></i> Câu Hỏi & Bài Làm
-          </button>
-          <button id="tab-btn-vocab" onclick="switchTab('vocab')" class="flex-1 py-3 px-2 text-center font-bold text-xs md:text-sm border-b-2 border-transparent text-slate-500 hover:text-slate-700 flex items-center justify-center gap-1.5 transition">
-            <i class="fa-solid fa-book-bookmark"></i> Từ Vựng & Paraphrase
+        <div class="flex border-b border-slate-200 bg-slate-50 items-center justify-between">
+          <div class="flex flex-1">
+            <button id="tab-btn-quiz" onclick="switchTab('quiz')" class="flex-1 py-3 px-2 text-center font-bold text-xs md:text-sm border-b-2 border-indigo-600 text-indigo-700 flex items-center justify-center gap-1.5 transition">
+              <i class="fa-solid fa-list-check"></i> Câu Hỏi & Bài Làm
+            </button>
+            <button id="tab-btn-vocab" onclick="switchTab('vocab')" class="flex-1 py-3 px-2 text-center font-bold text-xs md:text-sm border-b-2 border-transparent text-slate-500 hover:text-slate-700 flex items-center justify-center gap-1.5 transition">
+              <i class="fa-solid fa-table-list"></i> Bảng Paraphrase & Từ Vựng
+            </button>
+          </div>
+          <!-- Nút xóa highlight cột phải -->
+          <div class="px-2">
+            <button onclick="clearRightHighlights()" class="p-1.5 text-rose-600 hover:bg-rose-50 rounded-lg text-xs font-semibold transition" title="Xóa toàn bộ highlight phần câu hỏi">
+              <i class="fa-solid fa-eraser"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Tooltip nổi Highlight cho Cột Phải (Câu hỏi) -->
+        <div id="right-hl-toolbar" class="hidden absolute z-50 bg-slate-900 text-white px-2.5 py-1.5 rounded-xl shadow-xl flex items-center gap-2 border border-slate-700 text-xs transition-opacity duration-200">
+          <span class="text-[11px] text-slate-400 font-medium">Tô câu hỏi:</span>
+          <button onclick="applyHighlight('right', 'hl-yellow')" class="w-5 h-5 rounded-full bg-yellow-300 hover:scale-110 border border-white/50 transition"></button>
+          <button onclick="applyHighlight('right', 'hl-green')" class="w-5 h-5 rounded-full bg-emerald-300 hover:scale-110 border border-white/50 transition"></button>
+          <button onclick="applyHighlight('right', 'hl-cyan')" class="w-5 h-5 rounded-full bg-sky-300 hover:scale-110 border border-white/50 transition"></button>
+          <button onclick="applyHighlight('right', 'hl-pink')" class="w-5 h-5 rounded-full bg-pink-300 hover:scale-110 border border-white/50 transition"></button>
+          <div class="h-3.5 w-px bg-slate-700 mx-0.5"></div>
+          <button onclick="removeSelectedHighlight('right')" class="text-rose-400 hover:text-rose-300 text-xs flex items-center gap-1 px-1">
+            <i class="fa-solid fa-trash-can text-[11px]"></i> Xóa
           </button>
         </div>
 
+        <div class="text-[11px] text-slate-400 px-4 pt-2 flex items-center gap-1.5">
+          <i class="fa-solid fa-highlighter text-indigo-500"></i>
+          <span>Bôi đen câu hỏi / yêu cầu đề bài để tô màu từ khóa.</span>
+        </div>
+
         <!-- Tab 1: Quiz Form -->
-        <div id="tab-quiz" class="flex-1 overflow-y-auto p-4 custom-scrollbar space-y-4">
+        <div id="tab-quiz" class="flex-1 overflow-y-auto p-4 custom-scrollbar space-y-4 select-text">
           <div id="quiz-instruction" class="bg-amber-50 border-l-4 border-amber-400 p-3 rounded-r-lg text-xs text-amber-900 leading-snug">
             <!-- Instruction text -->
           </div>
           <form id="reading-quiz" onsubmit="submitQuiz(event)" class="space-y-4">
             <div id="questions-list" class="space-y-4">
-              <!-- Render câu hỏi -->
+              <!-- Render câu hỏi qua JS -->
             </div>
             <div class="flex items-center gap-2 pt-2">
               <button type="submit" class="flex-1 py-2.5 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow transition text-xs flex items-center justify-center gap-2">
@@ -185,15 +211,15 @@
         </div>
 
         <!-- Tab 2: Vocab & Paraphrase -->
-        <div id="tab-vocab" class="hidden flex-1 overflow-y-auto p-4 custom-scrollbar space-y-5">
-          <!-- Bảng Paraphrase chuẩn format như hình ảnh yêu cầu -->
+        <div id="tab-vocab" class="hidden flex-1 overflow-y-auto p-4 custom-scrollbar space-y-5 select-text">
+          <!-- Bảng Paraphrase chuẩn format như hình ảnh -->
           <div id="para-content" class="space-y-3">
-            <!-- Render bảng Paraphrase chuẩn -->
+            <!-- Render bảng Paraphrase -->
           </div>
 
           <!-- Từ vựng -->
           <div id="vocab-content" class="space-y-3 pt-3 border-t border-slate-200">
-            <!-- Render danh sách từ vựng -->
+            <!-- Render từ vựng -->
           </div>
         </div>
 
@@ -203,7 +229,7 @@
 
   </div>
 
-  <!-- SCRIPT DATA & APP LOGIC -->
+  <!-- SCRIPT DỮ LIỆU & LOGIC -->
   <script>
     const ACTIVITIES = [
       {
@@ -246,18 +272,18 @@
         title: "Activity 2: HOME FROM HOME",
         instruction: "Read the passage and complete the sentences below. Choose NO MORE THAN THREE WORDS from the passage for each answer.",
         passage: [
-          { en: "I remember feeling the first time I left home that I would never be able to feel at home anywhere but in my home. No other place would have my mum and dad, my annoying little brother and my cat, Tilly. Nowhere would smell like my home – my mum's roast chicken in the oven and the salty, seaweed smell that drifted in from the nearby beach. The sound of seagulls squawking was the sound of home. Nowhere else would I feel comfortable enough to put my feet up under me and gaze into the log fire dreaming of the future.", vi: "Tôi nhớ lần đầu tiên rời khỏi nhà, tôi đã cảm thấy rằng mình sẽ không bao giờ có thể cảm thấy thoải mái như ở nhà khi ở bất kỳ nơi nào khác. Không nơi nào khác có mẹ và bố đáng yêu của tôi, cậu em trai phiền phức của tôi và chú mèo Tilly. Không nơi nào có mùi giống như ở nhà – mùi món gà quay của mẹ trong lò nướng và mùi mằn mặn của rong biển trôi dạt vào từ bãi biển gần đó..." },
-          { en: "I was 15 when I first went away from home on a school trip to Germany. My friends were going too, but we would all stay with different families. I was nervous about this. I knew the home I was going to would not be as comfortable as mine, the family would not be as kind, and who knew what the German food would be like? I knew I would spend three weeks, homesick and sad, missing my family back home.", vi: "Tôi 15 tuổi khi lần đầu tiên xa nhà trong một chuyến đi của trường tới Đức. Bạn bè tôi cũng đi, nhưng tất cả chúng tôi sẽ ở với những gia đình khác nhau. Tôi rất lo lắng về điều này. Tôi biết ngôi nhà mà mình sắp ở sẽ không thoải mái như nhà mình... Tôi biết mình sẽ phải trải qua ba tuần nhớ nhà và buồn bã, nhớ gia đình ở quê nhà." },
-          { en: "We arrived in Germany late at night after a long journey by coach and boat. I was tired and hungry. We went into the school hall, where the host families were waiting to meet us. I wondered which one would be mine. Would they give me dinner at this time and would I be able to eat the unfamiliar food? Suddenly I heard my name called and the name of my exchange partner, Brigitte Schmitt. A pretty, blonde girl stepped forward, smiling widely. Behind her stood her parents, a pleasant-looking couple who were also smiling. They held out their hands and said, 'Wilkommen in Deutschland. Welcome to Germany.'", vi: "Chúng tôi đến Đức vào đêm muộn sau một hành trình dài bằng xe khách và tàu thủy. Tôi mệt và đói... Đột nhiên, tôi nghe thấy tên mình được gọi cùng với tên của bạn học cùng chương trình trao đổi, Brigitte Schmitt. Một cô gái tóc vàng xinh xắn bước lên phía trước, nở nụ cười thật tươi. Đứng phía sau cô ấy là bố mẹ cô, một cặp vợ chồng trông dễ mến và cũng đang mỉm cười..." },
-          { en: "I spent three happy weeks with the Schmitt family. Brigitte had an elder brother, Hendrik, and a younger sister, Lisa. They had two cats, Ping and Pong, who sat on my lap as I looked into the fire in the evenings. The whole family were kind and welcoming. My room was cosy and warm and we looked out onto a forest. The fresh clean smell of the trees and of apples baking in the oven became familiar and comforting, like the smells of home. I learnt in those three weeks that you can feel at home anywhere that people are kind to you.", vi: "Tôi đã trải qua ba tuần vui vẻ cùng gia đình Schmitt. Brigitte có anh trai Hendrik và em gái Lisa. Họ có hai chú mèo, Ping và Pong, chúng thường ngồi trong lòng tôi khi tôi nhìn vào ngọn lửa vào buổi tối. Cả gia đình đều rất tốt bụng và thân thiện. Căn phòng của tôi ấm áp, dễ chịu và nhìn ra một khu rừng..." },
-          { en: "Later that year, Brigitte came to stay with me in the UK. I gave her my room and moved in with my brother. I cleared space for her clothes and put fresh flowers in a vase by the bed. I asked my mum to make her famous roast chicken and an apple pie to make our guest feel at home. We made a welcome banner and put it up on the front door. I did everything I could to help Brigitte feel at home with us. I now understood the importance of a warm welcome.", vi: "Cuối năm đó, Brigitte đến ở cùng tôi tại Vương quốc Anh. Tôi nhường phòng của mình cho cô ấy và chuyển sang ở cùng phòng với em trai. Tôi dọn chỗ để quần áo của cô ấy và cắm những bông hoa tươi vào một chiếc bình cạnh giường. Tôi nhờ mẹ làm món gà quay nổi tiếng của bà và một chiếc bánh táo để vị khách của chúng tôi cảm thấy như đang ở nhà..." }
+          { en: "I remember feeling the first time I left home that I would never be able to feel at home anywhere but in my home. No other place would have my mum and dad, my annoying little brother and my cat, Tilly. Nowhere would smell like my home – my mum's roast chicken in the oven and the salty, seaweed smell that drifted in from the nearby beach. The sound of seagulls squawking was the sound of home. Nowhere else would I feel comfortable enough to put my feet up under me and gaze into the log fire dreaming of the future.", vi: "Tôi nhớ lần đầu tiên rời khỏi nhà, tôi đã cảm thấy rằng mình sẽ không bao giờ có thể cảm thấy thoải mái như ở nhà khi ở bất kỳ nơi nào khác. Không nơi nào khác có mẹ và bố đáng yêu của tôi, em trai tôi và chú mèo Tilly. Mùi món gà quay của mẹ trong lò nướng và mùi mằn mặn của rong biển..." },
+          { en: "I was 15 when I first went away from home on a school trip to Germany. My friends were going too, but we would all stay with different families. I was nervous about this. I knew the home I was going to would not be as comfortable as mine, the family would not be as kind, and who knew what the German food would be like? I knew I would spend three weeks, homesick and sad, missing my family back home.", vi: "Tôi 15 tuổi khi lần đầu tiên xa nhà trong một chuyến đi của trường tới Đức. Bạn bè tôi cũng đi, nhưng tất cả chúng tôi sẽ ở với những gia đình khác nhau. Tôi rất lo lắng về điều này. Tôi biết mình sẽ phải trải qua ba tuần nhớ nhà và buồn bã, nhớ gia đình ở quê nhà." },
+          { en: "We arrived in Germany late at night after a long journey by coach and boat. I was tired and hungry. We went into the school hall, where the host families were waiting to meet us. I wondered which one would be mine. Would they give me dinner at this time and would I be able to eat the unfamiliar food? Suddenly I heard my name called and the name of my exchange partner, Brigitte Schmitt. A pretty, blonde girl stepped forward, smiling widely. Behind her stood her parents, a pleasant-looking couple who were also smiling. They held out their hands and said, 'Wilkommen in Deutschland. Welcome to Germany.'", vi: "Chúng tôi đến Đức vào đêm muộn sau một hành trình dài. Đột nhiên tôi nghe thấy tên mình được gọi cùng với tên bạn học trao đổi Brigitte Schmitt. Một cô gái tóc vàng xinh xắn bước lên phía trước, nở nụ cười thật tươi. Đứng phía sau cô ấy là bố mẹ cô..." },
+          { en: "I spent three happy weeks with the Schmitt family. Brigitte had an elder brother, Hendrik, and a younger sister, Lisa. They had two cats, Ping and Pong, who sat on my lap as I looked into the fire in the evenings. The whole family were kind and welcoming. My room was cosy and warm and we looked out onto a forest. The fresh clean smell of the trees and of apples baking in the oven became familiar and comforting, like the smells of home. I learnt in those three weeks that you can feel at home anywhere that people are kind to you.", vi: "Tôi đã trải qua ba tuần vui vẻ cùng gia đình Schmitt. Brigitte có anh trai Hendrik và em gái Lisa. Họ có hai chú mèo, Ping và Pong. Căn phòng của tôi ấm cúng và nhìn ra một khu rừng..." },
+          { en: "Later that year, Brigitte came to stay with me in the UK. I gave her my room and moved in with my brother. I cleared space for her clothes and put fresh flowers in a vase by the bed. I asked my mum to make her famous roast chicken and an apple pie to make our guest feel at home. We made a welcome banner and put it up on the front door. I did everything I could to help Brigitte feel at home with us. I now understood the importance of a warm welcome.", vi: "Cuối năm đó, Brigitte đến ở cùng tôi tại Anh. Tôi dọn phòng, cắm hoa và nhờ mẹ làm món gà quay nổi tiếng để bạn cảm thấy như ở nhà. Giờ đây tôi đã hiểu tầm quan trọng của sự đón tiếp nồng hậu." }
         ],
         questions: [
           { q: "1. The writer's mother often cooks _______", ans: ["roast chicken"], loc: "Đoạn 1: '...my mum's roast chicken in the oven...'", exp: "Món ăn mẹ tác giả thường nấu nướng trong lò là món 'roast chicken'." },
           { q: "2. She thought the visit to Germany would make her feel _______", ans: ["homesick and sad"], loc: "Đoạn 2: 'I knew I would spend three weeks, homesick and sad...'", exp: "Tác giả từng nghĩ mình sẽ có 3 tuần buồn bã và nhớ nhà ('homesick and sad')." },
           { q: "3. Brigitte came to pick up the girl with _______", ans: ["her parents"], loc: "Đoạn 3: 'Behind her stood her parents, a pleasant-looking couple...'", exp: "Brigitte đi cùng với bố mẹ cô ấy ('her parents')." },
           { q: "4. The Schmitt family's pets' names are _______", ans: ["ping and pong"], loc: "Đoạn 4: 'They had two cats, Ping and Pong...'", exp: "Tên hai chú mèo cưng là 'Ping and Pong'." },
-          { q: "5. From her bedroom the girl could see _______", ans: ["a forest", "forest"], loc: "Đoạn 4: 'My room was cosy and warm and we looked out onto a forest.'", exp: "Từ phòng ngủ cô bé nhìn ra một khu rừng ('a forest')." },
+          { q: "5. From her bedroom the girl could see _______", ans: ["a forest", "forest"], loc: "Đoạn 4: 'My room was cosy and warm and we looked out onto a forest.'", exp: "Khung cảnh nhìn từ phòng ngủ là một khu rừng ('a forest')." },
           { q: "6. The girl and her family tried hard to make Brigitte _______", ans: ["feel at home"], loc: "Đoạn 5: 'I did everything I could to help Brigitte feel at home with us.'", exp: "Gia đình đã làm tất cả để Brigitte thấy như ở nhà ('feel at home')." }
         ],
         // BẢNG PARAPHRASE CHÍNH XÁC NHƯ TRONG ẢNH
@@ -286,7 +312,7 @@
         passage: [
           { en: "A. CHARLES: In the US, there are only certain things you can eat with your fingers... When I went to South India, though, I realised that it is a whole new skill to learn to eat rice and curry with your fingers... You use your fingertips, never the palm of your hand, and use your thumb to pop it into your mouth.", vi: "A. CHARLES: Ở Mỹ chỉ ăn vài món bằng tay... Sang Nam Ấn Độ, tôi nhận ra ăn bằng tay là cả kỹ năng mới... Dùng đầu ngón tay chứ không dùng lòng bàn tay..." },
           { en: "B. ALFREDO: For me, the 'fast food' culture always shocks me... Food is part of your identity, so what are you saying about yourself when you eat some rubbish which contains chemicals?", vi: "B. ALFREDO: Đồ ăn nhanh làm tôi sốc... Thức ăn là một phần bản sắc của bạn..." },
-          { en: "C. QIANG SHI: In China, when we are offered something, we say 'No thanks', even though we want it, because the person will definitely repeat the offer. In other countries 'no' means 'no'...", vi: "C. QIANG SHI: Ở Trung Quốc được mời gì hay nói 'Không cảm ơn' dù muốn, vì họ sẽ tiếp tục mời..." },
+          { en: "C. QIANG SHI: In China, when we go to a restaurant with colleagues, when we are offered something, we say 'No thanks', even though we want it, because the person will definitely repeat the offer. In other countries 'no' means 'no'...", vi: "C. QIANG SHI: Ở Trung Quốc được mời gì hay nói 'Không cảm ơn' dù muốn, vì họ sẽ tiếp tục mời..." },
           { en: "D. PAULINE: In many parts of the world, meat equates to prosperity, so the idea of going out for a meal and not having meat is alien to them.", vi: "D. PAULINE: Nhiều nơi thịt đồng nghĩa với giàu sang, ăn uống không có thịt là kỳ lạ với họ." },
           { en: "E. AILEEN: In Australia, we eat cereal. But when I travelled in Asia, I realised that in many places, there is no difference between breakfast and dinner: rice, curry, noodles, soup appeared at breakfast.", vi: "E. AILEEN: Ở Úc ăn ngũ cốc. Sang châu Á thì bữa sáng và bữa tối đều có cơm, mì, cà ri như nhau..." }
         ],
@@ -303,9 +329,7 @@
           { qWord: "eating represents", pWord: "equates to", note: "Đại diện cho / đồng nghĩa với" },
           { qWord: "no difference between", pWord: "all appeared at breakfast", note: "Không có sự phân biệt / đều xuất hiện" }
         ],
-        vocab: [
-          { word: "prosperity", type: "n", ipa: "/prɒsˈper.ə.ti/", def: "Sự thịnh vượng, sung túc", ex: "The nation enjoyed long periods of peace and prosperity.", viEx: "Đất nước tận hưởng thời kỳ dài hòa bình và thịnh vượng." }
-        ]
+        vocab: [{ word: "prosperity", type: "n", ipa: "/prɒsˈper.ə.ti/", def: "Sự thịnh vượng", ex: "Economic prosperity.", viEx: "Sự thịnh vượng kinh tế." }]
       },
       {
         id: 4,
@@ -315,7 +339,7 @@
         passage: [
           { en: "A. Dolphins are known as friendly, intelligent creatures that have a special relationship with humans. Experts think they may understand that humans are similar to them and try to protect them from predators and other dangers.", vi: "Cá heo bảo vệ con người vì thấy con người tương đồng với chúng..." },
           { en: "B. Wildlife filmmaker Hardy Jones was filming a group of dolphins, when a large shark swam towards him ready to attack. Four dolphins came to his rescue and drove the shark away. Jones was a well-known campaigner against the killing of dolphins.", vi: "Hardy Jones được cá heo cứu khỏi cá mập. Ông là nhà vận động bảo vệ cá heo nổi tiếng..." },
-          { en: "E. In California, humpback whales were protecting migrating grey whales from attacks by orcas (killer whales) over a period of at least seven hours. In China, Yang Yun couldn't move her legs due to freezing temperatures. Beluga whale Mila gripped Yang Yun's leg in her mouth and pushed Yun to the surface.", vi: "Cá voi lưng gù bảo vệ đàn cá voi xám di cư trước cá voi sát thủ hơn 7 giờ. Cá voi trắng Mila ngậm chân kéo thợ lặn Yang Yun lên khi cô bị cóng chân..." }
+          { en: "E. In California, humpback whales were protecting migrating grey whales from attacks by orcas (killer whales) over a period of at least seven hours. In China, Yang Yun couldn't move her legs due to freezing temperatures. Beluga whale Mila gripped Yang Yun's leg in her mouth and pushed Yun to the surface.", vi: "Cá voi lưng gù bảo vệ đàn cá voi xám di cư trước cá voi sát thủ hơn 7 giờ. Cá voi trắng Mila ngậm chân kéo thợ lặn Yang Yun lên..." }
         ],
         questions: [
           { q: "1. A pod of dolphins saved the life of a man called _______ while he was videoing them.", ans: ["hardy jones"], loc: "Đoạn B: 'filmmaker Hardy Jones was filming a group of dolphins...'", exp: "Người được cứu là 'Hardy Jones'." },
@@ -333,9 +357,7 @@
           { qWord: "travelling from one place to another", pWord: "migrating", note: "Di cư từ nơi này sang nơi khác" },
           { qWord: "taking hold of", pWord: "gripped in her mouth", note: "Ngoạm lấy, giữ chặt" }
         ],
-        vocab: [
-          { word: "predator", type: "n", ipa: "/ˈpred.ə.tər/", def: "Động vật ăn thịt săn mồi", ex: "Dolphins steer clear of apex predators.", viEx: "Cá heo tránh xa những loài săn mồi đầu bảng." }
-        ]
+        vocab: [{ word: "predator", type: "n", ipa: "/ˈpred.ə.tər/", def: "Động vật săn mồi", ex: "Ocean predator.", viEx: "Loài săn mồi đại dương." }]
       },
       {
         id: 5,
@@ -360,9 +382,7 @@
           { qWord: "return them to", pWord: "reintroduce into", note: "Tái thả về nơi cư trú tự nhiên" },
           { qWord: "view from their homes", pWord: "webcams in enclosures", note: "Xem qua máy quay tại gia" }
         ],
-        vocab: [
-          { word: "conservation", type: "n", ipa: "/ˌkɒn.səˈveɪ.ʃən/", def: "Sự bảo tồn", ex: "Conservation of wildlife is essential.", viEx: "Bảo tồn hoang dã là điều thiết yếu." }
-        ]
+        vocab: [{ word: "conservation", type: "n", ipa: "/ˌkɒn.səˈveɪ.ʃən/", def: "Sự bảo tồn", ex: "Wildlife conservation.", viEx: "Bảo tồn động vật hoang dã." }]
       },
       {
         id: 6,
@@ -680,12 +700,14 @@
       }
     ];
 
-    let currentActIndex = 1; // Mặc định mở Activity 2 như trong ảnh
+    let currentActIndex = 1; // Mặc định mở Activity 2
     let isTranslated = false;
     let isPlaying = false;
     let synth = window.speechSynthesis;
     let utterance = null;
+
     let currentSelectedRange = null;
+    let currentTargetColumn = null;
 
     function initSidebar() {
       const menuContainer = document.getElementById('activity-menu');
@@ -718,7 +740,7 @@
       const act = ACTIVITIES[index];
 
       if (isPlaying) toggleAudio();
-      hideHighlightToolbar();
+      hideAllHighlightToolbars();
 
       document.getElementById('top-title').textContent = act.title;
       document.getElementById('top-subtitle').textContent = act.part;
@@ -736,7 +758,7 @@
         toggleSidebar();
       }
 
-      // Render Passage
+      // Render Passage (Cột trái)
       const pContainer = document.getElementById('passage-container');
       pContainer.innerHTML = `
         <div class="text-center pb-2 border-b border-slate-100">
@@ -758,7 +780,7 @@
         pContainer.appendChild(block);
       });
 
-      // Render Questions
+      // Render Questions (Cột phải)
       document.getElementById('quiz-instruction').innerHTML = `
         <p class="font-bold uppercase tracking-wider text-[11px] mb-0.5"><i class="fa-solid fa-circle-info"></i> Yêu cầu đề bài:</p>
         <p>${act.instruction}</p>
@@ -781,7 +803,7 @@
         qContainer.appendChild(card);
       });
 
-      // RENDER BẢNG PARAPHRASE TRỰC QUAN CHUẨN FORM NHƯ ẢNH
+      // Render Paraphrase Table (Cột phải - Tab 2)
       const pTable = document.getElementById('para-content');
       let tableRows = '';
       if (act.paraphraseTable && act.paraphraseTable.length > 0) {
@@ -819,7 +841,7 @@
         </div>
       `;
 
-      // Render Vocab
+      // Render Vocab (Cột phải - Tab 2)
       const vContainer = document.getElementById('vocab-content');
       vContainer.innerHTML = `
         <div class="flex items-center justify-between mb-2">
@@ -859,6 +881,8 @@
       const qBtn = document.getElementById('tab-btn-quiz');
       const vBtn = document.getElementById('tab-btn-vocab');
 
+      hideAllHighlightToolbars();
+
       if (tab === 'quiz') {
         qTab.classList.remove('hidden');
         vTab.classList.add('hidden');
@@ -882,54 +906,92 @@
       document.getElementById('trans-btn-text').textContent = isTranslated ? "Ẩn Bản Dịch" : "Xem Bản Dịch";
     }
 
-    // Highlighter
+    // ==========================================
+    // CƠ CHẾ HIGHLIGHT HAI CỘT ĐỘC LẬP
+    // ==========================================
     const passageContainer = document.getElementById('passage-container');
-    const highlightToolbar = document.getElementById('highlight-toolbar');
+    const leftSection = document.getElementById('left-column-section');
+    const leftHlToolbar = document.getElementById('left-hl-toolbar');
+
+    const rightSection = document.getElementById('right-column-section');
+    const rightHlToolbar = document.getElementById('right-hl-toolbar');
+    const tabQuiz = document.getElementById('tab-quiz');
+    const tabVocab = document.getElementById('tab-vocab');
 
     document.addEventListener('mouseup', function (e) {
+      if (leftHlToolbar.contains(e.target) || rightHlToolbar.contains(e.target)) return;
+
       const selection = window.getSelection();
       if (!selection.isCollapsed && selection.rangeCount > 0) {
         const range = selection.getRangeAt(0);
-        if (passageContainer.contains(range.commonAncestorContainer)) {
-          const rect = range.getBoundingClientRect();
-          const containerRect = passageContainer.parentElement.getBoundingClientRect();
+        const container = range.commonAncestorContainer;
 
+        // Vùng chọn nằm ở CỘT TRÁI (Bài đọc)
+        if (passageContainer.contains(container)) {
+          hideAllHighlightToolbars();
+          currentTargetColumn = 'left';
           currentSelectedRange = range.cloneRange();
 
-          const topPos = rect.top - containerRect.top - 42;
-          const leftPos = Math.max(10, rect.left - containerRect.left + (rect.width / 2) - 100);
+          const rect = range.getBoundingClientRect();
+          const pRect = leftSection.getBoundingClientRect();
 
-          highlightToolbar.style.top = `${topPos}px`;
-          highlightToolbar.style.left = `${leftPos}px`;
-          highlightToolbar.classList.remove('hidden');
+          const topPos = rect.top - pRect.top - 42;
+          const leftPos = Math.max(10, rect.left - pRect.left + (rect.width / 2) - 100);
+
+          leftHlToolbar.style.top = `${topPos}px`;
+          leftHlToolbar.style.left = `${leftPos}px`;
+          leftHlToolbar.classList.remove('hidden');
+          return;
+        }
+
+        // Vùng chọn nằm ở CỘT PHẢI (Câu hỏi hoặc Tab Từ vựng, bỏ qua ô nhập text)
+        const isInRightQuiz = tabQuiz.contains(container) && e.target.tagName !== 'INPUT';
+        const isInRightVocab = tabVocab.contains(container);
+
+        if (isInRightQuiz || isInRightVocab) {
+          hideAllHighlightToolbars();
+          currentTargetColumn = 'right';
+          currentSelectedRange = range.cloneRange();
+
+          const rect = range.getBoundingClientRect();
+          const pRect = rightSection.getBoundingClientRect();
+
+          const topPos = rect.top - pRect.top - 42;
+          const leftPos = Math.max(10, rect.left - pRect.left + (rect.width / 2) - 100);
+
+          rightHlToolbar.style.top = `${topPos}px`;
+          rightHlToolbar.style.left = `${leftPos}px`;
+          rightHlToolbar.classList.remove('hidden');
           return;
         }
       }
-      if (!highlightToolbar.contains(e.target)) {
-        hideHighlightToolbar();
-      }
+
+      hideAllHighlightToolbars();
     });
 
-    function hideHighlightToolbar() {
-      highlightToolbar.classList.add('hidden');
+    function hideAllHighlightToolbars() {
+      if (leftHlToolbar) leftHlToolbar.classList.add('hidden');
+      if (rightHlToolbar) rightHlToolbar.classList.add('hidden');
       currentSelectedRange = null;
+      currentTargetColumn = null;
     }
 
-    function applyHighlight(colorClass) {
+    function applyHighlight(col, colorClass) {
       if (!currentSelectedRange) return;
+
       const span = document.createElement('span');
       span.className = colorClass;
       try {
         span.appendChild(currentSelectedRange.extractContents());
         currentSelectedRange.insertNode(span);
       } catch (err) {
-        console.error("Lỗi highlight:", err);
+        console.error("Lỗi tô highlight:", err);
       }
       window.getSelection().removeAllRanges();
-      hideHighlightToolbar();
+      hideAllHighlightToolbars();
     }
 
-    function removeSelectedHighlight() {
+    function removeSelectedHighlight(col) {
       if (!currentSelectedRange) return;
       const common = currentSelectedRange.commonAncestorContainer;
       const parentSpan = common.nodeType === 1 ? common : common.parentElement;
@@ -942,11 +1004,11 @@
         parent.removeChild(parentSpan);
       }
       window.getSelection().removeAllRanges();
-      hideHighlightToolbar();
+      hideAllHighlightToolbars();
     }
 
-    function clearAllHighlights() {
-      if (!confirm("Bạn muốn xóa toàn bộ highlight trong bài này?")) return;
+    function clearLeftHighlights() {
+      if (!confirm("Bạn muốn xóa toàn bộ highlight bài đọc ở cột trái?")) return;
       const marks = passageContainer.querySelectorAll('.hl-yellow, .hl-green, .hl-cyan, .hl-pink');
       marks.forEach(span => {
         const parent = span.parentNode;
@@ -955,7 +1017,20 @@
         }
         parent.removeChild(span);
       });
-      hideHighlightToolbar();
+      hideAllHighlightToolbars();
+    }
+
+    function clearRightHighlights() {
+      if (!confirm("Bạn muốn xóa toàn bộ highlight ở phần câu hỏi và từ vựng bên phải?")) return;
+      const marks = rightSection.querySelectorAll('.hl-yellow, .hl-green, .hl-cyan, .hl-pink');
+      marks.forEach(span => {
+        const parent = span.parentNode;
+        while (span.firstChild) {
+          parent.insertBefore(span.firstChild, span);
+        }
+        parent.removeChild(span);
+      });
+      hideAllHighlightToolbars();
     }
 
     // TTS AI Reader

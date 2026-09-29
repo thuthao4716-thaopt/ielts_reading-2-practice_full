@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IELTS Reading Master - Trọn Bộ 18 Bài Tập & Bút Highlight Hai Cột</title>
+  <title>IELTS Reading Master - Trọn Bộ 18 Activities</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- FontAwesome CDN -->
@@ -58,7 +58,7 @@
         <span class="bg-white text-indigo-700 px-2.5 py-1 rounded-md font-extrabold text-sm uppercase tracking-wide">IELTS</span>
         <div>
           <h1 class="text-base md:text-lg font-bold leading-tight line-clamp-1" id="top-title">IELTS Reading - Round 2</h1>
-          <p class="text-xs text-indigo-200 hidden sm:block" id="top-subtitle">Practice today, Success tomorrow!</p>
+          <p class="text-xs text-indigo-200 hidden sm:block" id="top-subtitle">Trọn bộ 18 Activities - 9 dạng bài</p>
         </div>
       </div>
       <div class="flex items-center space-x-2 text-xs md:text-sm">
@@ -66,7 +66,7 @@
           Điểm: <span id="score-display">0/0</span>
         </span>
         <button onclick="toggleSidebar()" class="hidden lg:flex items-center gap-1.5 bg-indigo-800/80 hover:bg-indigo-900 px-3 py-1.5 rounded-lg border border-indigo-500/30 text-xs transition">
-          <i class="fa-solid fa-list-ul"></i> Chọn Bài
+          <i class="fa-solid fa-list-ul"></i> Chọn Bài (18)
         </button>
       </div>
     </div>
@@ -81,14 +81,14 @@
         <div class="p-3.5 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
           <div class="flex items-center space-x-2 text-slate-800 font-bold text-sm">
             <i class="fa-solid fa-layer-group text-indigo-600"></i>
-            <span>18 IELTS Activities</span>
+            <span>Danh Sách 18 Bài Tập</span>
           </div>
           <button onclick="toggleSidebar()" class="lg:hidden text-slate-400 hover:text-slate-600">
             <i class="fa-solid fa-xmark text-lg"></i>
           </button>
         </div>
         <div id="activity-menu" class="flex-1 overflow-y-auto p-2 space-y-1.5 custom-scrollbar text-xs">
-          <!-- Render tự động bởi JS -->
+          <!-- Render 18 bài bằng JS -->
         </div>
       </div>
     </aside>
@@ -142,7 +142,7 @@
 
         <!-- Nội dung Passage -->
         <div id="passage-container" class="overflow-y-auto pr-2 custom-scrollbar space-y-4 text-slate-700 text-sm leading-relaxed select-text">
-          <!-- Render bằng JS -->
+          <!-- Render bài đọc qua JS -->
         </div>
       </section>
 
@@ -202,7 +202,7 @@
           </div>
           <form id="reading-quiz" onsubmit="submitQuiz(event)" class="space-y-4">
             <div id="questions-list" class="space-y-4">
-              <!-- Render câu hỏi -->
+              <!-- Render câu hỏi qua JS -->
             </div>
             <div class="flex items-center gap-2 pt-2">
               <button type="submit" class="flex-1 py-2.5 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow transition text-xs flex items-center justify-center gap-2">
@@ -234,12 +234,12 @@
 
   </div>
 
-  <!-- SCRIPT DỮ LIỆU ĐẦY ĐỦ 18 BÀI & LOGIC -->
+  <!-- SCRIPT DỮ LIỆU ĐẦY ĐỦ 18 ACTIVITIES & LOGIC -->
   <script>
     const ACTIVITIES = [
       {
         id: 1,
-        part: "01. SENTENCE COMPLETION",
+        part: "01. DẠNG BÀI SENTENCE COMPLETION",
         title: "Activity 1: AMAZING HOMES",
         instruction: "Complete the sentences. Choose NO MORE THAN TWO WORDS from the passage for each answer.",
         passage: [
@@ -273,7 +273,7 @@
       },
       {
         id: 2,
-        part: "01. SENTENCE COMPLETION",
+        part: "01. DẠNG BÀI SENTENCE COMPLETION",
         title: "Activity 2: HOME FROM HOME",
         instruction: "Read the passage and complete the sentences below. Choose NO MORE THAN THREE WORDS from the passage for each answer.",
         passage: [
@@ -310,7 +310,7 @@
       },
       {
         id: 3,
-        part: "01. SENTENCE COMPLETION",
+        part: "01. DẠNG BÀI SENTENCE COMPLETION",
         title: "Activity 3: FOOD CULTURE SHOCK",
         instruction: "Complete these sentences using a word from the text.",
         passage: [
@@ -337,7 +337,7 @@
       },
       {
         id: 4,
-        part: "01. SENTENCE COMPLETION",
+        part: "01. DẠNG BÀI SENTENCE COMPLETION",
         title: "Activity 4: OUR FRIENDS AND PROTECTORS",
         instruction: "Write NO MORE THAN TWO/THREE WORDS from the passage for each answer.",
         passage: [
@@ -365,7 +365,7 @@
       },
       {
         id: 5,
-        part: "01. SENTENCE COMPLETION",
+        part: "01. DẠNG BÀI SENTENCE COMPLETION",
         title: "Activity 5: THE MODERN ZOO",
         instruction: "Choose NO MORE THAN TWO WORDS from the passage for each answer.",
         passage: [
@@ -390,9 +390,9 @@
       },
       {
         id: 6,
-        part: "02. SUMMARY COMPLETION",
+        part: "02. DẠNG BÀI SUMMARY COMPLETION",
         title: "Activity 6: UNUSUAL SPORTS",
-        instruction: "Complete summary: [A boring, B change, C clever, D feature, E horses, F join, G mixed, H moving, I serious, J sport, K strange, L trampolines]",
+        instruction: "Complete summary using words A-L: [A boring, B change, C clever, D feature, E horses, F join, G mixed, H moving, I serious, J sport, K strange, L trampolines]",
         passage: [
           { en: "There are plenty of new and unusual sports out there... mix of existing sports, with a local element added. Buzkashi is played on horseback. Chess boxing is a classic mix of brains and brawn where you switch quickly between the two.", vi: "Các môn thể thao lạ kết hợp nhiều yếu tố..." }
         ],
@@ -416,7 +416,7 @@
       },
       {
         id: 7,
-        part: "02. SUMMARY COMPLETION",
+        part: "02. DẠNG BÀI SUMMARY COMPLETION",
         title: "Activity 7: Parkour",
         instruction: "Complete summary using words A-M: [A agrees, B barriers, C competition, D conflicts, E creativity, F latecomers, G move, H moving, I personal, J respect, K team, L tournaments, M traceurs]",
         passage: [
@@ -442,7 +442,7 @@
       },
       {
         id: 8,
-        part: "03. TRUE / FALSE / NOT GIVEN",
+        part: "03. DẠNG BÀI TRUE/FALSE/NOT GIVEN",
         title: "Activity 8: UNUSUAL SPORTS (TFNG)",
         instruction: "Write TRUE, FALSE or NOT GIVEN.",
         passage: [
@@ -465,7 +465,7 @@
       },
       {
         id: 9,
-        part: "03. TRUE / FALSE / NOT GIVEN",
+        part: "03. DẠNG BÀI TRUE/FALSE/NOT GIVEN",
         title: "Activity 9: Parkour (TFNG)",
         instruction: "Write TRUE, FALSE or NOT GIVEN.",
         passage: [
@@ -491,7 +491,7 @@
       },
       {
         id: 10,
-        part: "03. TRUE / FALSE / NOT GIVEN",
+        part: "03. DẠNG BÀI TRUE/FALSE/NOT GIVEN",
         title: "Activity 10: BECOME RICH AND FAMOUS",
         instruction: "Write YES, NO or NOT GIVEN.",
         passage: [
@@ -514,7 +514,7 @@
       },
       {
         id: 11,
-        part: "03. TRUE / FALSE / NOT GIVEN",
+        part: "03. DẠNG BÀI TRUE/FALSE/NOT GIVEN",
         title: "Activity 11: Famous animals (YES/NO/NG)",
         instruction: "Write YES, NO or NOT GIVEN.",
         passage: [
@@ -542,7 +542,7 @@
       },
       {
         id: 12,
-        part: "04. SHORT ANSWER QUESTIONS",
+        part: "04. DẠNG BÀI SHORT ANSWER QUESTIONS",
         title: "Activity 12: SOCIAL MEDIA & FRIENDSHIP",
         instruction: "Choose NO MORE THAN THREE WORDS from the passage for each answer.",
         passage: [
@@ -565,7 +565,7 @@
       },
       {
         id: 13,
-        part: "05. MATCHING SENTENCE ENDINGS",
+        part: "05. DẠNG BÀI MATCHING SENTENCE ENDINGS",
         title: "Activity 13: OUR FRIENDS AND PROTECTORS",
         instruction: "Complete each sentence with correct ending (a-h).",
         passage: [
@@ -587,7 +587,7 @@
       },
       {
         id: 14,
-        part: "05. MATCHING SENTENCE ENDINGS",
+        part: "05. DẠNG BÀI MATCHING SENTENCE ENDINGS",
         title: "Activity 14: THE MODERN ZOO",
         instruction: "Complete each sentence with correct ending A-H.",
         passage: [
@@ -609,7 +609,7 @@
       },
       {
         id: 15,
-        part: "06. MATCHING FEATURES",
+        part: "06. DẠNG BÀI MATCHING FEATURES",
         title: "Activity 15: FAMOUS ANIMALS (Matching)",
         instruction: "Choose animal [A Hachiko, B Knut, C Elsa].",
         passage: [
@@ -635,7 +635,7 @@
       },
       {
         id: 16,
-        part: "07. MATCHING PARAGRAPH INFO",
+        part: "07. DẠNG BÀI MATCHING PARAGRAPH INFORMATION",
         title: "Activity 16: FOOD TV",
         instruction: "Which paragraphs contain the information? Write A-G.",
         passage: [
@@ -659,7 +659,7 @@
       },
       {
         id: 17,
-        part: "08. MATCHING HEADINGS",
+        part: "08. DẠNG BÀI MATCHING HEADINGS",
         title: "Activity 17: MARKETS AROUND THE WORLD",
         instruction: "Choose heading for B-F: [i Local craft, ii Cheap countryside food, iv New style at bargain, vi Winter gifts, vii Sell what you don't need]",
         passage: [
@@ -682,7 +682,7 @@
       },
       {
         id: 18,
-        part: "09. MULTIPLE CHOICE",
+        part: "09. DẠNG BÀI MULTIPLE CHOICE",
         title: "Activity 18: EDUCATION & WORKPLACE",
         instruction: "Read and answer multiple choice questions.",
         passage: [
@@ -704,7 +704,7 @@
       }
     ];
 
-    let currentActIndex = 1; // Mặc định mở Activity 2
+    let currentActIndex = 0; // Mặc định mở Activity 1
     let isTranslated = false;
     let isPlaying = false;
     let synth = window.speechSynthesis;
@@ -956,7 +956,6 @@
       if (rightHlToolbar) rightHlToolbar.classList.add('hidden');
     }
 
-    // Áp dụng màu highlight cho vùng chọn hiện tại
     function applyHighlight(colorClass) {
       const sel = window.getSelection();
       let targetRange = savedRange;
@@ -979,7 +978,6 @@
       hideToolbars();
     }
 
-    // Xóa màu đoạn đang chọn
     function removeSelectedHighlight() {
       const sel = window.getSelection();
       let targetRange = savedRange;
@@ -1138,7 +1136,7 @@
 
     window.addEventListener('DOMContentLoaded', () => {
       initSidebar();
-      selectActivity(1); // Mặc định mở Activity 2
+      selectActivity(0); // Mặc định mở Activity 1
     });
   </script>
 </body>

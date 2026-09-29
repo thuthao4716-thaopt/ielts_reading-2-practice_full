@@ -2,8 +2,8 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IELTS Reading Master - Trọn Bộ 18 Activities</title>
+  <meta name="viewport" content="width=1024, initial-scale=1.0, user-scalable=yes">
+  <title>IELTS Reading Master - Trọn Bộ 18 Activities & Full Từ Vựng Phát Âm AmE</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- FontAwesome CDN -->
@@ -23,7 +23,6 @@
     .custom-scrollbar::-webkit-scrollbar-thumb:hover {
       background: #94a3b8;
     }
-    /* Các lớp highlight trong suốt sắc nét */
     .hl-yellow {
       background-color: rgba(254, 240, 138, 0.8) !important;
       border-radius: 2px;
@@ -50,191 +49,184 @@
 
   <!-- Header -->
   <header class="bg-indigo-700 text-white shadow-md sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+    <div class="max-w-[1400px] mx-auto px-4 py-2.5 flex items-center justify-between gap-4">
       <div class="flex items-center space-x-3">
-        <button onclick="toggleSidebar()" class="lg:hidden p-2 rounded-lg bg-indigo-800 hover:bg-indigo-900 transition text-white">
-          <i class="fa-solid fa-bars text-lg"></i>
+        <button onclick="toggleSidebar()" class="p-2 rounded-lg bg-indigo-800 hover:bg-indigo-900 transition text-white">
+          <i class="fa-solid fa-bars text-base"></i>
         </button>
-        <span class="bg-white text-indigo-700 px-2.5 py-1 rounded-md font-extrabold text-sm uppercase tracking-wide">IELTS</span>
+        <span class="bg-white text-indigo-700 px-2 py-0.5 rounded-md font-extrabold text-xs uppercase tracking-wide">IELTS</span>
         <div>
-          <h1 class="text-base md:text-lg font-bold leading-tight line-clamp-1" id="top-title">IELTS Reading - Round 2</h1>
-          <p class="text-xs text-indigo-200 hidden sm:block" id="top-subtitle">Trọn bộ 18 Activities - 9 dạng bài</p>
+          <h1 class="text-sm md:text-base font-bold leading-tight line-clamp-1" id="top-title">IELTS Reading - Round 2</h1>
+          <p class="text-[11px] text-indigo-200" id="top-subtitle">18 Activities - Đầy đủ từ vựng & Phát âm AmE</p>
         </div>
       </div>
-      <div class="flex items-center space-x-2 text-xs md:text-sm">
-        <span id="score-badge" class="hidden bg-emerald-600 px-3 py-1.5 rounded-full font-semibold shadow">
+      <div class="flex items-center space-x-2 text-xs">
+        <span id="score-badge" class="hidden bg-emerald-600 px-3 py-1 rounded-full font-semibold shadow text-xs">
           Điểm: <span id="score-display">0/0</span>
         </span>
-        <button onclick="toggleSidebar()" class="hidden lg:flex items-center gap-1.5 bg-indigo-800/80 hover:bg-indigo-900 px-3 py-1.5 rounded-lg border border-indigo-500/30 text-xs transition">
+        <button onclick="toggleSidebar()" class="flex items-center gap-1.5 bg-indigo-800/80 hover:bg-indigo-900 px-3 py-1 rounded-lg border border-indigo-500/30 text-xs transition">
           <i class="fa-solid fa-list-ul"></i> Chọn Bài (18)
         </button>
       </div>
     </div>
   </header>
 
-  <!-- Container -->
-  <div class="max-w-7xl mx-auto px-4 py-4 flex-1 w-full grid grid-cols-1 lg:grid-cols-12 gap-5 relative">
+  <!-- Container ép 2 cột cố định cho iPad & PC -->
+  <div class="max-w-[1400px] mx-auto px-3 py-3 flex-1 w-full grid grid-cols-12 gap-3 md:gap-4 relative">
     
-    <!-- Sidebar Menu 18 Bài Tập -->
-    <aside id="sidebar" class="fixed inset-y-0 left-0 z-40 w-72 bg-white shadow-2xl transform -translate-x-full transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 lg:w-full lg:col-span-3 lg:shadow-none lg:bg-transparent flex flex-col h-[calc(100vh-80px)] lg:h-[calc(100vh-100px)] sticky top-20">
-      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 flex flex-col h-full overflow-hidden">
-        <div class="p-3.5 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
-          <div class="flex items-center space-x-2 text-slate-800 font-bold text-sm">
-            <i class="fa-solid fa-layer-group text-indigo-600"></i>
-            <span>Danh Sách 18 Bài Tập</span>
-          </div>
-          <button onclick="toggleSidebar()" class="lg:hidden text-slate-400 hover:text-slate-600">
-            <i class="fa-solid fa-xmark text-lg"></i>
-          </button>
+    <!-- Sidebar Menu Trượt (Drawer) -->
+    <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-72 bg-white shadow-2xl transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col h-full">
+      <div class="p-3.5 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
+        <div class="flex items-center space-x-2 text-slate-800 font-bold text-sm">
+          <i class="fa-solid fa-layer-group text-indigo-600"></i>
+          <span>Danh Sách 18 Bài Tập</span>
         </div>
-        <div id="activity-menu" class="flex-1 overflow-y-auto p-2 space-y-1.5 custom-scrollbar text-xs">
-          <!-- Render 18 bài bằng JS -->
-        </div>
+        <button onclick="toggleSidebar()" class="text-slate-400 hover:text-slate-600 p-1">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+      <div id="activity-menu" class="flex-1 overflow-y-auto p-2 space-y-1 custom-scrollbar text-xs">
+        <!-- Render 18 bài bằng JS -->
       </div>
     </aside>
 
-    <!-- Khu vực 2 cột làm bài -->
-    <main class="lg:col-span-9 grid grid-cols-1 xl:grid-cols-12 gap-5">
+    <!-- Overlay khi mở Sidebar -->
+    <div id="sidebar-overlay" onclick="toggleSidebar()" class="hidden fixed inset-0 bg-black/40 z-40 backdrop-blur-[1px]"></div>
+
+    <!-- CỘT TRÁI: BÀI ĐỌC (7/12 cột) -->
+    <section id="left-column-section" class="col-span-7 bg-white rounded-xl shadow-sm border border-slate-200 p-3.5 flex flex-col h-[calc(100dvh-75px)] sticky top-[65px] relative">
       
-      <!-- CỘT TRÁI: BÀI ĐỌC (KÈM HIGHLIGHT TRÁI) -->
-      <section id="left-column-section" class="xl:col-span-7 bg-white rounded-2xl shadow-sm border border-slate-200 p-4 md:p-5 flex flex-col h-[calc(100vh-100px)] sticky top-20 relative">
+      <!-- Toolbar Cột Trái -->
+      <div class="pb-2.5 mb-2 border-b border-slate-100 flex items-center justify-between gap-2 bg-slate-50/90 p-2 rounded-lg border border-slate-200/60">
+        <div class="flex items-center space-x-1.5">
+          <button id="btn-audio-play" onclick="toggleAudio()" class="px-2.5 py-1 bg-indigo-600 hover:bg-indigo-700 text-white rounded text-xs font-semibold transition flex items-center gap-1 shadow-sm">
+            <i id="audio-icon" class="fa-solid fa-play"></i>
+            <span id="audio-text">Audio AI</span>
+          </button>
+          <div class="flex items-center space-x-1 bg-white px-1.5 py-0.5 rounded border border-slate-200 text-xs">
+            <i class="fa-solid fa-gauge-high text-slate-400 text-[10px]"></i>
+            <select id="audio-rate" class="bg-transparent font-medium text-slate-700 text-xs focus:outline-none">
+              <option value="0.8">0.8x</option>
+              <option value="1" selected>1.0x</option>
+              <option value="1.2">1.2x</option>
+            </select>
+          </div>
+        </div>
         
-        <!-- Toolbar Cột Trái -->
-        <div class="pb-3 mb-2 border-b border-slate-100 flex flex-wrap items-center justify-between gap-2 bg-slate-50/80 p-2.5 rounded-xl border border-slate-200/60">
-          <div class="flex items-center space-x-1.5">
-            <button id="btn-audio-play" onclick="toggleAudio()" class="px-2.5 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-xs font-semibold transition flex items-center gap-1.5 shadow-sm">
-              <i id="audio-icon" class="fa-solid fa-play"></i>
-              <span id="audio-text">Audio AI</span>
-            </button>
-            <div class="flex items-center space-x-1 bg-white px-2 py-1 rounded-lg border border-slate-200 text-xs">
-              <i class="fa-solid fa-gauge-high text-slate-400 text-[10px]"></i>
-              <select id="audio-rate" class="bg-transparent font-medium text-slate-700 text-xs focus:outline-none">
-                <option value="0.8">0.8x</option>
-                <option value="1" selected>1.0x</option>
-                <option value="1.2">1.2x</option>
-              </select>
-            </div>
-          </div>
-          
-          <div class="flex items-center space-x-1.5">
-            <button onclick="clearLeftHighlights()" class="px-2 py-1.5 bg-white border border-rose-200 text-rose-600 hover:bg-rose-50 rounded-lg text-xs font-medium transition flex items-center gap-1 shadow-sm" title="Xóa toàn bộ highlight bài đọc">
-              <i class="fa-solid fa-eraser"></i> Xóa HL
-            </button>
-            <button onclick="toggleTranslation()" class="px-2.5 py-1.5 bg-white border border-indigo-200 text-indigo-700 hover:bg-indigo-50 rounded-lg text-xs font-semibold transition flex items-center gap-1.5 shadow-sm">
-              <i class="fa-solid fa-language text-indigo-600"></i>
-              <span id="trans-btn-text">Xem Bản Dịch</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Tooltip nổi Highlight cho Cột Trái -->
-        <div id="left-hl-toolbar" class="hidden absolute z-50 bg-slate-900 text-white px-2.5 py-1.5 rounded-xl shadow-xl flex items-center gap-2 border border-slate-700 text-xs transition-opacity duration-200">
-          <span class="text-[11px] text-slate-300 font-medium">Tô màu:</span>
-          <button onclick="applyHighlight('hl-yellow')" class="w-5 h-5 rounded-full bg-yellow-300 hover:scale-110 border border-white/50 transition"></button>
-          <button onclick="applyHighlight('hl-green')" class="w-5 h-5 rounded-full bg-emerald-300 hover:scale-110 border border-white/50 transition"></button>
-          <button onclick="applyHighlight('hl-cyan')" class="w-5 h-5 rounded-full bg-sky-300 hover:scale-110 border border-white/50 transition"></button>
-          <button onclick="applyHighlight('hl-pink')" class="w-5 h-5 rounded-full bg-pink-300 hover:scale-110 border border-white/50 transition"></button>
-          <div class="h-3.5 w-px bg-slate-700 mx-0.5"></div>
-          <button onclick="removeSelectedHighlight()" class="text-rose-400 hover:text-rose-300 text-xs flex items-center gap-1 px-1">
-            <i class="fa-solid fa-trash-can text-[11px]"></i> Xóa
+        <div class="flex items-center space-x-1.5">
+          <button onclick="clearLeftHighlights()" class="px-2 py-1 bg-white border border-rose-200 text-rose-600 hover:bg-rose-50 rounded text-xs font-medium transition flex items-center gap-1 shadow-sm" title="Xóa toàn bộ highlight bài đọc">
+            <i class="fa-solid fa-eraser"></i> Xóa HL
+          </button>
+          <button onclick="toggleTranslation()" class="px-2.5 py-1 bg-white border border-indigo-200 text-indigo-700 hover:bg-indigo-50 rounded text-xs font-semibold transition flex items-center gap-1 shadow-sm">
+            <i class="fa-solid fa-language text-indigo-600"></i>
+            <span id="trans-btn-text">Bản Dịch</span>
           </button>
         </div>
+      </div>
 
-        <!-- Nội dung Passage -->
-        <div id="passage-container" class="overflow-y-auto pr-2 custom-scrollbar space-y-4 text-slate-700 text-sm leading-relaxed select-text">
-          <!-- Render bài đọc qua JS -->
-        </div>
-      </section>
+      <!-- Tooltip nổi Highlight cho Cột Trái -->
+      <div id="left-hl-toolbar" class="hidden absolute z-50 bg-slate-900 text-white px-2 py-1 rounded-lg shadow-xl flex items-center gap-1.5 border border-slate-700 text-xs transition-opacity duration-200">
+        <span class="text-[10px] text-slate-300 font-medium">Tô:</span>
+        <button onclick="applyHighlight('hl-yellow')" class="w-4 h-4 rounded-full bg-yellow-300 hover:scale-110 border border-white/50 transition"></button>
+        <button onclick="applyHighlight('hl-green')" class="w-4 h-4 rounded-full bg-emerald-300 hover:scale-110 border border-white/50 transition"></button>
+        <button onclick="applyHighlight('hl-cyan')" class="w-4 h-4 rounded-full bg-sky-300 hover:scale-110 border border-white/50 transition"></button>
+        <button onclick="applyHighlight('hl-pink')" class="w-4 h-4 rounded-full bg-pink-300 hover:scale-110 border border-white/50 transition"></button>
+        <div class="h-3 w-px bg-slate-700 mx-0.5"></div>
+        <button onclick="removeSelectedHighlight()" class="text-rose-400 hover:text-rose-300 text-xs flex items-center gap-1 px-0.5">
+          <i class="fa-solid fa-trash-can text-[10px]"></i>
+        </button>
+      </div>
 
-      <!-- CỘT PHẢI: CÂU HỎI & PARAPHRASE (KÈM THANH HIGHLIGHT CỐ ĐỊNH) -->
-      <section id="right-column-section" class="xl:col-span-5 bg-white rounded-2xl shadow-sm border border-slate-200 flex flex-col h-[calc(100vh-100px)] sticky top-20 overflow-hidden relative">
-        
-        <!-- Tab Headers -->
-        <div class="flex border-b border-slate-200 bg-slate-50">
-          <button id="tab-btn-quiz" onclick="switchTab('quiz')" class="flex-1 py-3 px-2 text-center font-bold text-xs md:text-sm border-b-2 border-indigo-600 text-indigo-700 flex items-center justify-center gap-1.5 transition">
-            <i class="fa-solid fa-list-check"></i> Câu Hỏi & Bài Làm
-          </button>
-          <button id="tab-btn-vocab" onclick="switchTab('vocab')" class="flex-1 py-3 px-2 text-center font-bold text-xs md:text-sm border-b-2 border-transparent text-slate-500 hover:text-slate-700 flex items-center justify-center gap-1.5 transition">
-            <i class="fa-solid fa-table-list"></i> Bảng Paraphrase & Từ Vựng
-          </button>
-        </div>
+      <!-- Nội dung Passage -->
+      <div id="passage-container" class="overflow-y-auto pr-2 custom-scrollbar space-y-3.5 text-slate-700 text-[13px] md:text-sm leading-relaxed select-text flex-1">
+        <!-- Render bài đọc qua JS -->
+      </div>
+    </section>
 
-        <!-- THANH CÔNG CỤ BÚT HIGHLIGHT CỐ ĐỊNH CHO CỘT CÂU HỎI -->
-        <div class="px-3 py-2 bg-slate-100/95 border-b border-slate-200 flex items-center justify-between gap-2 text-xs">
-          <div class="flex items-center gap-2">
-            <span class="text-slate-600 font-semibold flex items-center gap-1 text-[11px]">
-              <i class="fa-solid fa-highlighter text-amber-500"></i> Bút câu hỏi:
-            </span>
-            <div class="flex items-center gap-1.5">
-              <button onclick="applyHighlight('hl-yellow')" class="w-5 h-5 rounded-full bg-yellow-300 hover:scale-110 border border-slate-300 shadow-sm transition" title="Tô Vàng"></button>
-              <button onclick="applyHighlight('hl-green')" class="w-5 h-5 rounded-full bg-emerald-300 hover:scale-110 border border-slate-300 shadow-sm transition" title="Tô Xanh lá"></button>
-              <button onclick="applyHighlight('hl-cyan')" class="w-5 h-5 rounded-full bg-sky-300 hover:scale-110 border border-slate-300 shadow-sm transition" title="Tô Xanh ngọc"></button>
-              <button onclick="applyHighlight('hl-pink')" class="w-5 h-5 rounded-full bg-pink-300 hover:scale-110 border border-slate-300 shadow-sm transition" title="Tô Hồng"></button>
-            </div>
+    <!-- CỘT PHẢI: CÂU HỎI & PARAPHRASE / TỪ VỰNG (5/12 cột) -->
+    <section id="right-column-section" class="col-span-5 bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col h-[calc(100dvh-75px)] sticky top-[65px] overflow-hidden relative">
+      
+      <!-- Tab Headers -->
+      <div class="flex border-b border-slate-200 bg-slate-50">
+        <button id="tab-btn-quiz" onclick="switchTab('quiz')" class="flex-1 py-2.5 px-2 text-center font-bold text-xs border-b-2 border-indigo-600 text-indigo-700 flex items-center justify-center gap-1 transition">
+          <i class="fa-solid fa-list-check"></i> Câu Hỏi
+        </button>
+        <button id="tab-btn-vocab" onclick="switchTab('vocab')" class="flex-1 py-2.5 px-2 text-center font-bold text-xs border-b-2 border-transparent text-slate-500 hover:text-slate-700 flex items-center justify-center gap-1 transition">
+          <i class="fa-solid fa-table-list"></i> Paraphrase & Từ Vựng
+        </button>
+      </div>
+
+      <!-- THANH CÔNG CỤ BÚT HIGHLIGHT CỐ ĐỊNH CỘT PHẢI -->
+      <div class="px-2.5 py-1.5 bg-slate-100 border-b border-slate-200 flex items-center justify-between gap-1 text-xs">
+        <div class="flex items-center gap-1.5">
+          <span class="text-slate-600 font-semibold flex items-center gap-1 text-[11px]">
+            <i class="fa-solid fa-highlighter text-amber-500"></i> Bút câu hỏi:
+          </span>
+          <div class="flex items-center gap-1">
+            <button onclick="applyHighlight('hl-yellow')" class="w-4 h-4 rounded-full bg-yellow-300 hover:scale-110 border border-slate-300 shadow-sm transition" title="Tô Vàng"></button>
+            <button onclick="applyHighlight('hl-green')" class="w-4 h-4 rounded-full bg-emerald-300 hover:scale-110 border border-slate-300 shadow-sm transition" title="Tô Xanh lá"></button>
+            <button onclick="applyHighlight('hl-cyan')" class="w-4 h-4 rounded-full bg-sky-300 hover:scale-110 border border-slate-300 shadow-sm transition" title="Tô Xanh ngọc"></button>
+            <button onclick="applyHighlight('hl-pink')" class="w-4 h-4 rounded-full bg-pink-300 hover:scale-110 border border-slate-300 shadow-sm transition" title="Tô Hồng"></button>
           </div>
-          <div class="flex items-center gap-1.5">
-            <button onclick="removeSelectedHighlight()" class="px-2 py-0.5 bg-white border border-slate-300 hover:bg-slate-50 rounded text-slate-600 font-medium text-[11px] shadow-sm transition" title="Bôi đen đoạn cần bỏ màu rồi bấm nút này">
-              Bỏ tô
+        </div>
+        <div class="flex items-center gap-1">
+          <button onclick="removeSelectedHighlight()" class="px-1.5 py-0.5 bg-white border border-slate-300 hover:bg-slate-50 rounded text-slate-600 font-medium text-[10px] shadow-sm transition">
+            Bỏ tô
+          </button>
+          <button onclick="clearRightHighlights()" class="px-1.5 py-0.5 bg-rose-50 border border-rose-200 hover:bg-rose-100 text-rose-700 rounded font-medium text-[10px] shadow-sm transition">
+            Xóa hết
+          </button>
+        </div>
+      </div>
+
+      <!-- Tooltip nổi nhỏ khi bôi đen ở Cột Phải -->
+      <div id="right-hl-toolbar" class="hidden absolute z-50 bg-slate-900 text-white px-2 py-1 rounded-lg shadow-xl flex items-center gap-1.5 border border-slate-700 text-xs transition-opacity duration-200">
+        <span class="text-[10px] text-slate-300 font-medium">Tô:</span>
+        <button onclick="applyHighlight('hl-yellow')" class="w-4 h-4 rounded-full bg-yellow-300 hover:scale-110 border border-white/50 transition"></button>
+        <button onclick="applyHighlight('hl-green')" class="w-4 h-4 rounded-full bg-emerald-300 hover:scale-110 border border-white/50 transition"></button>
+        <button onclick="applyHighlight('hl-cyan')" class="w-4 h-4 rounded-full bg-sky-300 hover:scale-110 border border-white/50 transition"></button>
+        <button onclick="applyHighlight('hl-pink')" class="w-4 h-4 rounded-full bg-pink-300 hover:scale-110 border border-white/50 transition"></button>
+        <div class="h-3 w-px bg-slate-700 mx-0.5"></div>
+        <button onclick="removeSelectedHighlight()" class="text-rose-400 hover:text-rose-300 text-xs flex items-center gap-1 px-0.5">
+          <i class="fa-solid fa-trash-can text-[10px]"></i>
+        </button>
+      </div>
+
+      <!-- Tab 1: Quiz Form -->
+      <div id="tab-quiz" class="flex-1 overflow-y-auto p-3 custom-scrollbar space-y-3.5 select-text">
+        <div id="quiz-instruction" class="bg-amber-50 border-l-4 border-amber-400 p-2.5 rounded-r-md text-xs text-amber-900 leading-snug">
+          <!-- Render đề bài -->
+        </div>
+        <form id="reading-quiz" onsubmit="submitQuiz(event)" class="space-y-3">
+          <div id="questions-list" class="space-y-3">
+            <!-- Render câu hỏi qua JS -->
+          </div>
+          <div class="flex items-center gap-2 pt-1 sticky bottom-0 bg-white py-2">
+            <button type="submit" class="flex-1 py-2 px-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-lg shadow transition text-xs flex items-center justify-center gap-1.5">
+              <i class="fa-solid fa-paper-plane"></i> Nộp Bài & Xem Giải Thích
             </button>
-            <button onclick="clearRightHighlights()" class="px-2 py-0.5 bg-rose-50 border border-rose-200 hover:bg-rose-100 text-rose-700 rounded font-medium text-[11px] shadow-sm transition" title="Xóa hết màu ở cột phải">
-              Xóa tất cả
+            <button type="button" onclick="resetCurrentQuiz()" class="py-2 px-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-lg text-xs transition">
+              <i class="fa-solid fa-rotate-right"></i>
             </button>
           </div>
+        </form>
+      </div>
+
+      <!-- Tab 2: Vocab & Paraphrase -->
+      <div id="tab-vocab" class="hidden flex-1 overflow-y-auto p-3 custom-scrollbar space-y-4 select-text">
+        <div id="para-content" class="space-y-2.5">
+          <!-- Render bảng Paraphrase -->
         </div>
-
-        <!-- Tooltip nổi nhỏ khi bôi đen ở Cột Phải -->
-        <div id="right-hl-toolbar" class="hidden absolute z-50 bg-slate-900 text-white px-2.5 py-1.5 rounded-xl shadow-xl flex items-center gap-2 border border-slate-700 text-xs transition-opacity duration-200">
-          <span class="text-[11px] text-slate-300 font-medium">Tô màu:</span>
-          <button onclick="applyHighlight('hl-yellow')" class="w-5 h-5 rounded-full bg-yellow-300 hover:scale-110 border border-white/50 transition"></button>
-          <button onclick="applyHighlight('hl-green')" class="w-5 h-5 rounded-full bg-emerald-300 hover:scale-110 border border-white/50 transition"></button>
-          <button onclick="applyHighlight('hl-cyan')" class="w-5 h-5 rounded-full bg-sky-300 hover:scale-110 border border-white/50 transition"></button>
-          <button onclick="applyHighlight('hl-pink')" class="w-5 h-5 rounded-full bg-pink-300 hover:scale-110 border border-white/50 transition"></button>
-          <div class="h-3.5 w-px bg-slate-700 mx-0.5"></div>
-          <button onclick="removeSelectedHighlight()" class="text-rose-400 hover:text-rose-300 text-xs flex items-center gap-1 px-1">
-            <i class="fa-solid fa-trash-can text-[11px]"></i>
-          </button>
+        <div id="vocab-content" class="space-y-2.5 pt-2 border-t border-slate-200">
+          <!-- Render từ vựng với nút loa phát âm AmE -->
         </div>
+      </div>
 
-        <!-- Tab 1: Quiz Form -->
-        <div id="tab-quiz" class="flex-1 overflow-y-auto p-4 custom-scrollbar space-y-4 select-text">
-          <div id="quiz-instruction" class="bg-amber-50 border-l-4 border-amber-400 p-3 rounded-r-lg text-xs text-amber-900 leading-snug">
-            <!-- Render đề bài -->
-          </div>
-          <form id="reading-quiz" onsubmit="submitQuiz(event)" class="space-y-4">
-            <div id="questions-list" class="space-y-4">
-              <!-- Render câu hỏi qua JS -->
-            </div>
-            <div class="flex items-center gap-2 pt-2">
-              <button type="submit" class="flex-1 py-2.5 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow transition text-xs flex items-center justify-center gap-2">
-                <i class="fa-solid fa-paper-plane"></i> Nộp Bài & Xem Giải Thích
-              </button>
-              <button type="button" onclick="resetCurrentQuiz()" class="py-2.5 px-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-xl text-xs transition">
-                <i class="fa-solid fa-rotate-right"></i>
-              </button>
-            </div>
-          </form>
-        </div>
-
-        <!-- Tab 2: Vocab & Paraphrase -->
-        <div id="tab-vocab" class="hidden flex-1 overflow-y-auto p-4 custom-scrollbar space-y-5 select-text">
-          <!-- Bảng Paraphrase dạng table 2 cột chuẩn mẫu ảnh -->
-          <div id="para-content" class="space-y-3">
-            <!-- Render bảng Paraphrase -->
-          </div>
-
-          <!-- Từ vựng -->
-          <div id="vocab-content" class="space-y-3 pt-3 border-t border-slate-200">
-            <!-- Render từ vựng -->
-          </div>
-        </div>
-
-      </section>
-
-    </main>
+    </section>
 
   </div>
 
-  <!-- SCRIPT DỮ LIỆU ĐẦY ĐỦ 18 ACTIVITIES & LOGIC -->
+  <!-- SCRIPT DỮ LIỆU ĐẦY ĐỦ 18 ACTIVITIES & FULL TỪ VỰNG AME -->
   <script>
     const ACTIVITIES = [
       {
@@ -243,13 +235,13 @@
         title: "Activity 1: AMAZING HOMES",
         instruction: "Complete the sentences. Choose NO MORE THAN TWO WORDS from the passage for each answer.",
         passage: [
-          { en: "Most people live in a house or a flat. When they go on holiday they stay in a hotel or a guest house. But some places where you can live or stay are a bit different.", vi: "Hầu hết mọi người sống trong một ngôi nhà hoặc căn hộ. Khi đi nghỉ, họ thường ở khách sạn hoặc nhà nghỉ. Nhưng một số nơi mà bạn có thể sinh sống hoặc lưu trú lại có phần khác biệt." },
-          { en: "A. One unusual place to live is a houseboat. Amsterdam in Holland is famous for its houseboats - there are about 2,500 of them. They have everything that normal houses have: a living room, bedroom, kitchen, bathroom and even sometimes a terrace on the roof. They are cheaper than houses and people who live on houseboats enjoy being close to nature. Some houseboats can be moved to other parts of the river, while others are permanently in one place.", vi: "A. Một nơi ở khác thường là nhà thuyền. Amsterdam ở Hà Lan nổi tiếng với những ngôi nhà thuyền – có khoảng 2.500 ngôi nhà như vậy. Chúng có mọi thứ mà những ngôi nhà bình thường có: phòng khách, phòng ngủ, nhà bếp, phòng tắm và đôi khi thậm chí còn có cả sân thượng trên mái..." },
-          { en: "B. In Tokyo, Japan, there is a see-through house. It is like a normal Japanese house but all the walls are made of glass. There is plenty of daylight but no privacy. Architect Sou Fujimoto designed it for a couple to make their home. He based his idea on early man living in trees. It wouldn't suit everyone but the couple who live there love the feeling of being surrounded by the natural world.", vi: "B. Ở Tokyo, Nhật Bản, có một ngôi nhà trong suốt. Nó giống như một ngôi nhà bình thường của Nhật Bản, nhưng tất cả các bức tường đều được làm bằng kính. Ngôi nhà có rất nhiều ánh sáng tự nhiên nhưng lại không có sự riêng tư. Kiến trúc sư Sou Fujimoto đã thiết kế nó cho một cặp vợ chồng..." },
-          { en: "C. All around the world, people live in homes made from shipping containers. Some use only one container, while others are made from several containers joined together. One house in Chile was built from 12 containers. They are cheap to buy and eco-friendly.", vi: "C. Trên khắp thế giới, mọi người sống trong những ngôi nhà làm từ container chở hàng. Chúng rẻ và thân thiện với môi trường..." },
-          { en: "D. In Germany, you can stay in a one-metre-square house, the smallest house in the world, called the House NA. Van Bo Le-Mentzel, a refugee from Laos, built it to draw attention to the world housing shortage. It is a wooden structure on wheels and weighs 40 kg. It has a locking door and window.", vi: "D. Ở Đức, bạn có thể ở trong ngôi nhà 1 mét vuông nhỏ nhất thế giới. Người ta dựng nên nó nhằm thu hút sự chú ý tới nạn thiếu hụt nhà ở..." },
-          { en: "E. For an unusual holiday you can stay in an igloo, a house made of ice. These can be found in several countries including Sweden, Norway and Finland. They are built new every winter. Jenny and Callum, visitors from Australia, told us, 'We slept in an igloo last night. It's so cold there - minus 5 degrees centigrade. We used reindeer skins to keep warm.'", vi: "E. Để có một kỳ nghỉ khác thường bạn có thể ở lều tuyết igloo. Jenny và Callum chia sẻ: 'Chúng tôi dùng da tuần lộc để giữ ấm.'" },
-          { en: "F. Another couple, Shaun and Rachel from Manchester, enjoyed a recent holiday in a treehouse in Sussex, England. They said, 'It was right up in the trees and had everything we needed, even wifi! It had a small kitchen and we did our own cooking. It was the perfect place to get away from our busy lives.'", vi: "F. Một cặp đôi khác đi nghỉ trong ngôi nhà trên cây: 'Đây là nơi hoàn hảo để trốn khỏi cuộc sống bận rộn.'" }
+          { en: "Most people live in a house or a flat. When they go on holiday they stay in a hotel or a guest house. But some places where you can live or stay are a bit different.", vi: "Hầu hết mọi người sống trong một ngôi nhà hoặc căn hộ. Khi đi nghỉ họ thường ở khách sạn hoặc nhà nghỉ. Nhưng một số nơi sinh sống hoặc lưu trú lại có phần khác biệt." },
+          { en: "A One unusual place to live is a houseboat. Amsterdam in Holland is famous for its houseboats - there are about 2,500 of them. They have everything that normal houses have: a living room, bedroom, kitchen, bathroom and even sometimes a terrace on the roof. They are cheaper than houses and people who live on houseboats enjoy being close to nature. Some houseboats can be moved to other parts of the river, while others are permanently in one place.", vi: "A Một nơi ở khác thường là nhà thuyền. Amsterdam ở Hà Lan nổi tiếng với khoảng 2.500 nhà thuyền. Chúng có đầy đủ tiện nghi, rẻ hơn nhà đất và giúp gần gũi với thiên nhiên." },
+          { en: "B In Tokyo, Japan, there is a see-through house. It is like a normal Japanese house but all the walls are made of glass. There is plenty of daylight but no privacy. Architect Sou Fujimoto designed it for a couple to make their home. He based his idea on early man living in trees. It wouldn't suit everyone but the couple who live there love the feeling of being surrounded by the natural world.", vi: "B Ở Tokyo, Nhật Bản có ngôi nhà trong suốt với các bức tường bằng kính. Dù nhiều ánh sáng nhưng không có sự riêng tư. Kiến trúc sư Sou Fujimoto thiết kế nó cho một cặp vợ chồng..." },
+          { en: "C All around the world, people live in homes made from shipping containers. Some use only one container, while others are made from several containers joined together. One house in Chile was built from 12 containers. They are cheap to buy and eco-friendly. They can also be placed in the garden or drive as guest rooms, studies or utility rooms.", vi: "C Khắp nơi trên thế giới, người ta sống trong nhà làm từ container. Chúng có giá rẻ và thân thiện với môi trường." },
+          { en: "D In Germany, you can stay in a one-metre-square house, the smallest house in the world, called the House NA. Van Bo Le-Mentzel, a refugee from Laos, built it to draw attention to the world housing shortage. It is a wooden structure on wheels and weighs 40 kg. It has a locking door and window. You can turn it onto its side when you want to lie down. Franz from Munich spent the night in one recently 'just to see what it was like'. He found it a bit uncomfortable!", vi: "D Ở Đức có ngôi nhà 1 mét vuông nhỏ nhất thế giới do Van Bo Le-Mentzel xây dựng để thu hút sự chú ý đến tình trạng thiếu nhà ở toàn cầu." },
+          { en: "E For an unusual holiday you can stay in an igloo, a house made of ice. These can be found in several countries including Sweden, Norway and Finland. They are built new every winter. Jenny and Callum, visitors from Australia, told us, 'We slept in an igloo last night. It's so cold there - minus 5 degrees centigrade. We used reindeer skins to keep warm.'", vi: "E Kỳ nghỉ khác thường trong lều tuyết igloo. Jenny và Callum chia sẻ họ đã dùng da tuần lộc để giữ ấm khi nhiệt độ âm 5 độ C." },
+          { en: "F Another couple, Shaun and Rachel from Manchester, enjoyed a recent holiday in a treehouse in Sussex, England. They said, 'It was right up in the trees and had everything we needed, even wifi! It had a small kitchen and we did our own cooking. It was the perfect place to get away from our busy lives.'", vi: "F Cặp đôi Shaun và Rachel nghỉ dưỡng ở nhà trên cây tại Sussex: 'Đó là nơi lý tưởng để tạm rời xa cuộc sống bận rộn.'" }
         ],
         questions: [
           { q: "1. The two people who live in the transparent house love it, but it wouldn't _______", ans: ["suit everyone"], loc: "Đoạn B: 'It wouldn't suit everyone but the couple who live there love...'", exp: "Đoạn B chỉ rõ ngôi nhà kính không phù hợp với tất cả mọi người ('suit everyone')." },
@@ -259,16 +251,40 @@
         ],
         paraphraseTable: [
           { qWord: "transparent house", pWord: "see-through house", note: "Ngôi nhà kính trong suốt" },
-          { qWord: "two people", pWord: "the couple", note: "Hai người / cặp vợ chồng" },
-          { qWord: "the designer", pWord: "Architect Sou Fujimoto / built it", note: "Người thiết kế, kiến trúc sư" },
-          { qWord: "lack of houses", pWord: "housing shortage", note: "Sự khan hiếm, thiếu thốn nhà ở" },
-          { qWord: "protect themselves from the cold", pWord: "keep warm", note: "Bảo vệ khỏi cái lạnh / giữ ấm" },
+          { qWord: "two people", pWord: "the couple", note: "Hai người / cặp đôi" },
+          { qWord: "the designer", pWord: "Architect Sou Fujimoto / built it", note: "Nhà thiết kế, kiến trúc sư" },
+          { qWord: "lack of houses", pWord: "housing shortage", note: "Thiếu nhà ở" },
+          { qWord: "protect themselves from cold", pWord: "keep warm", note: "Bảo vệ khỏi cái lạnh / giữ ấm" },
           { qWord: "making use of", pWord: "used", note: "Tận dụng, sử dụng" },
           { qWord: "ideal holiday", pWord: "perfect place to get away", note: "Kỳ nghỉ lý tưởng" }
         ],
         vocab: [
-          { word: "see-through", type: "adj", ipa: "/ˈsiː.θruː/", def: "Trong suốt, nhìn xuyên thấu", ex: "The building has see-through glass walls.", viEx: "Tòa nhà có tường kính trong suốt." },
-          { word: "shortage", type: "n", ipa: "/ˈʃɔː.tɪdʒ/", def: "Sự thiếu hụt, khan hiếm", ex: "The city faces an acute housing shortage.", viEx: "Thành phố đối mặt tình trạng thiếu nhà trầm trọng." }
+          { word: "transparent", type: "Tính từ", ipa: "/trænˈsperənt/", def: "trong suốt", ex: "The two people who live in the transparent house love it, but it wouldn't suit everyone.", viEx: "Hai người sống trong ngôi nhà trong suốt rất yêu thích nó, nhưng nó sẽ không phù hợp với tất cả mọi người." },
+          { word: "designer", type: "Danh từ", ipa: "/dɪˈzaɪnər/", def: "nhà thiết kế", ex: "The designer created a beautiful house.", viEx: "Nhà thiết kế đã tạo ra một ngôi nhà đẹp." },
+          { word: "hopes to", type: "Cụm động từ", ipa: "/hoʊps tə/", def: "hy vọng sẽ", ex: "She hopes to travel around Europe next year.", viEx: "Cô ấy hy vọng sẽ đi du lịch khắp châu Âu vào năm sau." },
+          { word: "lack of houses", type: "Cụm danh từ", ipa: "/læk əv ˈhaʊzɪz/", def: "tình trạng thiếu nhà ở", ex: "Many cities have a lack of houses.", viEx: "Nhiều thành phố đang thiếu nhà ở." },
+          { word: "all over the world", type: "Cụm trạng từ", ipa: "/ɔːl ˈoʊvər ðə wɝːld/", def: "trên khắp thế giới", ex: "People all over the world enjoy music.", viEx: "Mọi người trên khắp thế giới đều yêu thích âm nhạc." },
+          { word: "protect themselves", type: "Cụm động từ", ipa: "/prəˈtekt ðəmˈselvz/", def: "tự bảo vệ bản thân", ex: "People wear warm clothes to protect themselves from the cold.", viEx: "Mọi người mặc quần áo ấm để bảo vệ bản thân khỏi cái lạnh." },
+          { word: "making use of", type: "Cụm động từ", ipa: "/ˈmeɪkɪŋ juːs əv/", def: "tận dụng; sử dụng", ex: "We are making use of every small space.", viEx: "Chúng tôi đang tận dụng mọi không gian nhỏ." },
+          { word: "treehouse", type: "Danh từ", ipa: "/ˈtriːhaʊs/", def: "nhà trên cây", ex: "Another couple enjoyed a recent holiday in a treehouse in Sussex, England.", viEx: "Một cặp đôi đã tận hưởng kỳ nghỉ gần đây trong một ngôi nhà trên cây ở Sussex, Anh." },
+          { word: "ideal", type: "Tính từ", ipa: "/aɪˈdiːəl/", def: "lý tưởng", ex: "This hotel is ideal for families.", viEx: "Khách sạn này rất lý tưởng cho các gia đình." },
+          { word: "see-through", type: "Tính từ", ipa: "/ˈsiː θruː/", def: "trong suốt; nhìn xuyên qua được", ex: "In Tokyo, Japan, there is a see-through house.", viEx: "Ở Tokyo, Nhật Bản có một ngôi nhà trong suốt." },
+          { word: "made of glass", type: "Cụm tính từ", ipa: "/meɪd əv ɡlæs/", def: "được làm bằng kính", ex: "All the walls are made of glass.", viEx: "Tất cả các bức tường đều được làm bằng kính." },
+          { word: "couple", type: "Danh từ", ipa: "/ˈkʌpəl/", def: "cặp đôi", ex: "Architect Sou Fujimoto designed it for a couple to make their home.", viEx: "Kiến trúc sư Sou Fujimoto đã thiết kế nó cho một cặp đôi làm nơi sinh sống." },
+          { word: "make their home", type: "Cụm động từ", ipa: "/meɪk ðer hoʊm/", def: "biến thành nơi sinh sống; làm tổ ấm", ex: "Architect Sou Fujimoto designed it for a couple to make their home.", viEx: "Kiến trúc sư Sou Fujimoto đã thiết kế nó để một cặp đôi biến nơi đó thành ngôi nhà của mình." },
+          { word: "suit everyone", type: "Cụm động từ", ipa: "/suːt ˈevriwʌn/", def: "phù hợp với tất cả mọi người", ex: "It wouldn't suit everyone.", viEx: "Nó sẽ không phù hợp với tất cả mọi người." },
+          { word: "stay", type: "Động từ", ipa: "/steɪ/", def: "ở; lưu trú", ex: "In Germany, you can stay in a one-metre-square house.", viEx: "Ở Đức, bạn có thể ở trong một ngôi nhà rộng một mét vuông." },
+          { word: "one-metre-square house", type: "Cụm danh từ", ipa: "/wʌn ˈmiːtər skwer haʊs/", def: "ngôi nhà rộng một mét vuông", ex: "In Germany, you can stay in a one-metre-square house.", viEx: "Ở Đức, bạn có thể ở trong một ngôi nhà rộng một mét vuông." },
+          { word: "refugee", type: "Danh từ", ipa: "/ˌrefjuˈdʒiː/", def: "người tị nạn", ex: "Van Bo Le-Mentzel, a refugee from Laos, built it.", viEx: "Van Bo Le-Mentzel, một người tị nạn đến từ Lào, đã xây ngôi nhà này." },
+          { word: "draw attention", type: "Cụm động từ", ipa: "/drɔː əˈtenʃən/", def: "thu hút sự chú ý", ex: "Van Bo Le-Mentzel built it to draw attention to the world housing shortage.", viEx: "Van Bo Le-Mentzel đã xây nó để thu hút sự chú ý đến tình trạng thiếu nhà ở trên thế giới." },
+          { word: "housing shortage", type: "Cụm danh từ", ipa: "/ˈhaʊzɪŋ ˈʃɔːrtɪdʒ/", def: "tình trạng thiếu nhà ở", ex: "Van Bo Le-Mentzel built it to draw attention to the world housing shortage.", viEx: "Van Bo Le-Mentzel đã xây nó để thu hút sự chú ý đến tình trạng thiếu nhà ở trên thế giới." },
+          { word: "made of ice", type: "Cụm tính từ", ipa: "/meɪd əv aɪs/", def: "được làm bằng băng", ex: "For an unusual holiday you can stay in an igloo, a house made of ice.", viEx: "Để có một kỳ nghỉ khác thường, bạn có thể ở trong một ngôi nhà băng." },
+          { word: "winter", type: "Danh từ", ipa: "/ˈwɪntər/", def: "mùa đông", ex: "They are built new every winter.", viEx: "Chúng được xây mới vào mỗi mùa đông." },
+          { word: "reindeer skins", type: "Cụm danh từ", ipa: "/ˈreɪndɪr skɪnz/", def: "da tuần lộc", ex: "We used reindeer skins to keep warm.", viEx: "Chúng tôi dùng da tuần lộc để giữ ấm." },
+          { word: "keep warm", type: "Cụm động từ", ipa: "/kiːp wɔːrm/", def: "giữ ấm", ex: "We used reindeer skins to keep warm.", viEx: "Chúng tôi dùng da tuần lộc để giữ ấm." },
+          { word: "perfect place", type: "Cụm danh từ", ipa: "/ˈpɝːfɪkt pleɪs/", def: "nơi lý tưởng", ex: "It was the perfect place to get away from our busy lives.", viEx: "Đó là nơi lý tưởng để tạm rời xa cuộc sống bận rộn của chúng tôi." },
+          { word: "get away", type: "Cụm động từ", ipa: "/ɡet əˈweɪ/", def: "tránh xa; tạm rời khỏi", ex: "It was the perfect place to get away from our busy lives.", viEx: "Đó là nơi lý tưởng để tạm rời xa cuộc sống bận rộn của chúng tôi." },
+          { word: "busy lives", type: "Cụm danh từ", ipa: "/ˈbɪzi laɪvz/", def: "cuộc sống bận rộn", ex: "It was the perfect place to get away from our busy lives.", viEx: "Đó là nơi lý tưởng để tạm rời xa cuộc sống bận rộn của chúng tôi." }
         ]
       },
       {
@@ -277,11 +293,11 @@
         title: "Activity 2: HOME FROM HOME",
         instruction: "Read the passage and complete the sentences below. Choose NO MORE THAN THREE WORDS from the passage for each answer.",
         passage: [
-          { en: "I remember feeling the first time I left home that I would never be able to feel at home anywhere but in my home. No other place would have my mum and dad, my annoying little brother and my cat, Tilly. Nowhere would smell like my home – my mum's roast chicken in the oven and the salty, seaweed smell that drifted in from the nearby beach. The sound of seagulls squawking was the sound of home. Nowhere else would I feel comfortable enough to put my feet up under me and gaze into the log fire dreaming of the future.", vi: "Tôi nhớ lần đầu tiên rời khỏi nhà, tôi đã cảm thấy rằng mình sẽ không bao giờ có thể cảm thấy thoải mái như ở nhà khi ở bất kỳ nơi nào khác. Không nơi nào khác có mẹ và bố đáng yêu của tôi, em trai tôi và chú mèo Tilly. Mùi món gà quay của mẹ trong lò nướng và mùi mằn mặn của rong biển..." },
-          { en: "I was 15 when I first went away from home on a school trip to Germany. My friends were going too, but we would all stay with different families. I was nervous about this. I knew the home I was going to would not be as comfortable as mine, the family would not be as kind, and who knew what the German food would be like? I knew I would spend three weeks, homesick and sad, missing my family back home.", vi: "Tôi 15 tuổi khi lần đầu tiên xa nhà trong một chuyến đi của trường tới Đức. Bạn bè tôi cũng đi, nhưng tất cả chúng tôi sẽ ở với những gia đình khác nhau. Tôi rất lo lắng về điều này. Tôi biết mình sẽ phải trải qua ba tuần nhớ nhà và buồn bã, nhớ gia đình ở quê nhà." },
-          { en: "We arrived in Germany late at night after a long journey by coach and boat. I was tired and hungry. We went into the school hall, where the host families were waiting to meet us. I wondered which one would be mine. Would they give me dinner at this time and would I be able to eat the unfamiliar food? Suddenly I heard my name called and the name of my exchange partner, Brigitte Schmitt. A pretty, blonde girl stepped forward, smiling widely. Behind her stood her parents, a pleasant-looking couple who were also smiling. They held out their hands and said, 'Wilkommen in Deutschland. Welcome to Germany.'", vi: "Chúng tôi đến Đức vào đêm muộn sau một hành trình dài. Đột nhiên tôi nghe thấy tên mình được gọi cùng với tên bạn học trao đổi Brigitte Schmitt. Một cô gái tóc vàng xinh xắn bước lên phía trước, nở nụ cười thật tươi. Đứng phía sau cô ấy là bố mẹ cô..." },
-          { en: "I spent three happy weeks with the Schmitt family. Brigitte had an elder brother, Hendrik, and a younger sister, Lisa. They had two cats, Ping and Pong, who sat on my lap as I looked into the fire in the evenings. The whole family were kind and welcoming. My room was cosy and warm and we looked out onto a forest. The fresh clean smell of the trees and of apples baking in the oven became familiar and comforting, like the smells of home. I learnt in those three weeks that you can feel at home anywhere that people are kind to you.", vi: "Tôi đã trải qua ba tuần vui vẻ cùng gia đình Schmitt. Brigitte có anh trai Hendrik và em gái Lisa. Họ có hai chú mèo, Ping và Pong. Căn phòng của tôi ấm cúng và nhìn ra một khu rừng..." },
-          { en: "Later that year, Brigitte came to stay with me in the UK. I gave her my room and moved in with my brother. I cleared space for her clothes and put fresh flowers in a vase by the bed. I asked my mum to make her famous roast chicken and an apple pie to make our guest feel at home. We made a welcome banner and put it up on the front door. I did everything I could to help Brigitte feel at home with us. I now understood the importance of a warm welcome.", vi: "Cuối năm đó, Brigitte đến ở cùng tôi tại Anh. Tôi dọn phòng, cắm hoa và nhờ mẹ làm món gà quay nổi tiếng để bạn cảm thấy như ở nhà. Giờ đây tôi đã hiểu tầm quan trọng của sự đón tiếp nồng hậu." }
+          { en: "I remember feeling the first time I left home that I would never be able to feel at home anywhere but in my home. No other place would have my mum and dad, my annoying little brother and my cat, Tilly. Nowhere would smell like my home – my mum's roast chicken in the oven and the salty, seaweed smell that drifted in from the nearby beach. The sound of seagulls squawking was the sound of home. Nowhere else would I feel comfortable enough to put my feet up under me and gaze into the log fire dreaming of the future.", vi: "Tôi nhớ lần đầu tiên rời xa nhà tôi từng nghĩ mình không thể thấy thoải mái ở nơi nào khác. Mùi gà quay của mẹ trong lò nướng và mùi mặn của rong biển từ bãi biển gần đó là hương vị của tổ ấm." },
+          { en: "I was 15 when I first went away from home on a school trip to Germany. My friends were going too, but we would all stay with different families. I was nervous about this. I knew the home I was going to would not be as comfortable as mine, the family would not be as kind, and who knew what the German food would be like? I knew I would spend three weeks, homesick and sad, missing my family back home.", vi: "Năm 15 tuổi tôi sang Đức trong chuyến đi của trường. Tôi lo lắng mình sẽ phải trải qua ba tuần nhớ nhà và buồn bã..." },
+          { en: "We arrived in Germany late at night after a long journey by coach and boat. I was tired and hungry. We went into the school hall, where the host families were waiting to meet us. I wondered which one would be mine. Would they give me dinner at this time and would I be able to eat the unfamiliar food? Suddenly I heard my name called and the name of my exchange partner, Brigitte Schmitt. A pretty, blonde girl stepped forward, smiling widely. Behind her stood her parents, a pleasant-looking couple who were also smiling. They held out their hands and said, 'Wilkommen in Deutschland. Welcome to Germany.'", vi: "Đến Đức vào đêm muộn, Brigitte Schmitt - cô bạn tóc vàng cùng bố mẹ trông rất dễ mến bước đến chào đón tôi nồng hậu." },
+          { en: "I spent three happy weeks with the Schmitt family. Brigitte had an elder brother, Hendrik, and a younger sister, Lisa. They had two cats, Ping and Pong, who sat on my lap as I looked into the fire in the evenings. The whole family were kind and welcoming. My room was cosy and warm and we looked out onto a forest. The fresh clean smell of the trees and of apples baking in the oven became familiar and comforting, like the smells of home. I learnt in those three weeks that you can feel at home anywhere that people are kind to you.", vi: "Tôi trải qua 3 tuần vui vẻ cùng gia đình Schmitt. Họ có 2 chú mèo Ping và Pong. Phòng tôi nhìn ra khu rừng và mọi người rất ấm áp." },
+          { en: "Later that year, Brigitte came to stay with me in the UK. I gave her my room and moved in with my brother. I cleared space for her clothes and put fresh flowers in a vase by the bed. I asked my mum to make her famous roast chicken and an apple pie to make our guest feel at home. We made a welcome banner and put it up on the front door. I did everything I could to help Brigitte feel at home with us. I now understood the importance of a warm welcome.", vi: "Sau đó Brigitte sang Anh ở cùng tôi. Tôi dọn phòng, cắm hoa và nhờ mẹ nướng gà để bạn cảm thấy như ở nhà. Giờ tôi đã hiểu tầm quan trọng của lời chào đón ấm áp." }
         ],
         questions: [
           { q: "1. The writer's mother often cooks _______", ans: ["roast chicken"], loc: "Đoạn 1: '...my mum's roast chicken in the oven...'", exp: "Món ăn mẹ tác giả thường nấu nướng trong lò là món 'roast chicken'." },
@@ -302,10 +318,42 @@
           { qWord: "tried hard to make", pWord: "did everything I could to help", note: "Nỗ lực hết mình để giúp ai đó" }
         ],
         vocab: [
-          { word: "homesick", type: "adj", ipa: "/ˈhəʊm.sɪk/", def: "Nhớ nhà, bồn chồn khi xa quê", ex: "He felt terribly homesick during the trip.", viEx: "Cậu ấy cảm thấy nhớ nhà da diết suốt chuyến đi." },
-          { word: "cosy", type: "adj", ipa: "/ˈkəʊ.zi/", def: "Ấm cúng, dễ chịu", ex: "My room was cosy and warm.", viEx: "Căn phòng tôi ấm áp và ấm cúng." },
-          { word: "welcoming", type: "adj", ipa: "/ˈwel.kəm.ɪŋ/", def: "Niềm nở, hiếu khách", ex: "The hosts were hospitable and welcoming.", viEx: "Chủ nhà rất hiếu khách và niềm nở." },
-          { word: "feel at home", type: "idiom", ipa: "/fiːl æt həʊm/", def: "Cảm thấy thoải mái như ở nhà", ex: "Make yourself at home.", viEx: "Cứ tự nhiên như ở nhà nhé." }
+          { word: "writer", type: "Danh từ", ipa: "/ˈraɪtər/", def: "người viết; tác giả", ex: "The writer remembers leaving home for the first time.", viEx: "Người viết nhớ lần đầu tiên rời xa nhà." },
+          { word: "visit", type: "Danh từ", ipa: "/ˈvɪzɪt/", def: "chuyến thăm; chuyến đi", ex: "My visit to Germany was exciting.", viEx: "Chuyến đi đến Đức của tôi rất thú vị." },
+          { word: "Germany", type: "Danh từ riêng", ipa: "/ˈdʒɝːməni/", def: "Đức", ex: "I was 15 when I first went away from home on a school trip to Germany.", viEx: "Tôi 15 tuổi khi lần đầu tiên rời xa nhà để tham gia một chuyến đi của trường đến Đức." },
+          { word: "make her feel", type: "Cụm động từ", ipa: "/meɪk hɚ fiːl/", def: "khiến cô ấy cảm thấy", ex: "We wanted to make her feel welcome.", viEx: "Chúng tôi muốn khiến cô ấy cảm thấy được chào đón." },
+          { word: "pick up", type: "Cụm động từ", ipa: "/pɪk ʌp/", def: "đón", ex: "My parents came to pick me up after school.", viEx: "Bố mẹ tôi đến đón tôi sau giờ học." },
+          { word: "pets", type: "Danh từ số nhiều", ipa: "/pets/", def: "thú cưng", ex: "Many families have pets at home.", viEx: "Nhiều gia đình nuôi thú cưng ở nhà." },
+          { word: "bedroom", type: "Danh từ", ipa: "/ˈbedruːm/", def: "phòng ngủ", ex: "My bedroom is clean and comfortable.", viEx: "Phòng ngủ của tôi sạch sẽ và thoải mái." },
+          { word: "tried hard", type: "Cụm động từ", ipa: "/traɪd hɑːrd/", def: "cố gắng hết sức", ex: "She tried hard to help her friend.", viEx: "Cô ấy đã cố gắng hết sức để giúp bạn mình." },
+          { word: "Nowhere", type: "Trạng từ", ipa: "/ˈnoʊwer/", def: "không nơi nào", ex: "Nowhere would smell like my home.", viEx: "Không nơi nào có mùi hương giống như ngôi nhà của tôi." },
+          { word: "smell", type: "Động từ", ipa: "/smel/", def: "có mùi; ngửi thấy mùi", ex: "Nowhere would smell like my home.", viEx: "Không nơi nào có mùi hương giống như ngôi nhà của tôi." },
+          { word: "roast chicken", type: "Cụm danh từ", ipa: "/roʊst ˈtʃɪkɪn/", def: "gà quay", ex: "My mum's roast chicken in the oven...", viEx: "Món gà quay của mẹ tôi trong lò nướng..." },
+          { word: "oven", type: "Danh từ", ipa: "/ˈʌvən/", def: "lò nướng", ex: "My mum's roast chicken in the oven...", viEx: "Món gà quay của mẹ tôi trong lò nướng..." },
+          { word: "salty, seaweed smell", type: "Cụm danh từ", ipa: "/ˈsɔːlti ˈsiːwiːd smel/", def: "mùi rong biển mặn", ex: "The salty, seaweed smell drifted in from the nearby beach.", viEx: "Mùi rong biển mặn thoảng vào từ bãi biển gần đó." },
+          { word: "drifted in", type: "Cụm động từ", ipa: "/ˈdrɪftɪd ɪn/", def: "thoảng vào; bay vào", ex: "The salty, seaweed smell drifted in from the nearby beach.", viEx: "Mùi rong biển mặn thoảng vào từ bãi biển gần đó." },
+          { word: "nearby beach", type: "Cụm danh từ", ipa: "/ˈnɪrbaɪ biːtʃ/", def: "bãi biển gần đó", ex: "The salty, seaweed smell drifted in from the nearby beach.", viEx: "Mùi rong biển mặn thoảng vào từ bãi biển gần đó." },
+          { word: "went away from home", type: "Cụm động từ", ipa: "/went əˈweɪ frəm hoʊm/", def: "rời xa nhà", ex: "I was 15 when I first went away from home on a school trip to Germany.", viEx: "Tôi 15 tuổi khi lần đầu tiên rời xa nhà để tham gia chuyến đi của trường đến Đức." },
+          { word: "school trip", type: "Cụm danh từ", ipa: "/skuːl trɪp/", def: "chuyến đi của trường", ex: "I was 15 when I first went away from home on a school trip to Germany.", viEx: "Tôi 15 tuổi khi lần đầu tiên rời xa nhà để tham gia chuyến đi của trường đến Đức." },
+          { word: "nervous", type: "Tính từ", ipa: "/ˈnɝːvəs/", def: "lo lắng", ex: "I was nervous about this.", viEx: "Tôi rất lo lắng về điều đó." },
+          { word: "comfortable", type: "Tính từ", ipa: "/ˈkʌmftərbl/", def: "thoải mái", ex: "I knew the home I was going to would not be as comfortable as mine.", viEx: "Tôi biết ngôi nhà mình sắp đến sẽ không thoải mái bằng nhà mình." },
+          { word: "mine", type: "Đại từ sở hữu", ipa: "/maɪn/", def: "của tôi", ex: "I knew the home I was going to would not be as comfortable as mine.", viEx: "Tôi biết ngôi nhà mình sắp đến sẽ không thoải mái bằng nhà của tôi." },
+          { word: "kind", type: "Tính từ", ipa: "/kaɪnd/", def: "tốt bụng", ex: "The family would not be as kind.", viEx: "Gia đình đó sẽ không tốt bụng bằng." },
+          { word: "German food", type: "Cụm danh từ", ipa: "/ˈdʒɝːmən fuːd/", def: "đồ ăn Đức", ex: "Who knew what the German food would be like?", viEx: "Ai mà biết đồ ăn Đức sẽ như thế nào chứ?" },
+          { word: "homesick", type: "Tính từ", ipa: "/ˈhoʊmsɪk/", def: "nhớ nhà", ex: "I knew I would spend three weeks, homesick and sad.", viEx: "Tôi biết mình sẽ trải qua ba tuần nhớ nhà và buồn bã." },
+          { word: "exchange partner", type: "Cụm danh từ", ipa: "/ɪksˈtʃeɪndʒ ˈpɑːrtnər/", def: "bạn trao đổi", ex: "I heard my name called and the name of my exchange partner, Brigitte Schmitt.", viEx: "Tôi nghe thấy tên mình được gọi cùng với tên của bạn trao đổi là Brigitte Schmitt." },
+          { word: "blonde girl", type: "Cụm danh từ", ipa: "/blɑːnd ɡɝːl/", def: "cô gái tóc vàng", ex: "A pretty, blonde girl stepped forward, smiling widely.", viEx: "Một cô gái tóc vàng xinh xắn bước lên phía trước và mỉm cười rạng rỡ." },
+          { word: "stepped forward", type: "Cụm động từ", ipa: "/stept ˈfɔːrwərd/", def: "bước lên phía trước", ex: "A pretty, blonde girl stepped forward, smiling widely.", viEx: "Một cô gái tóc vàng xinh xắn bước lên phía trước và mỉm cười rạng rỡ." },
+          { word: "smiling widely", type: "Cụm động từ", ipa: "/ˈsmaɪlɪŋ ˈwaɪdli/", def: "mỉm cười rạng rỡ", ex: "A pretty, blonde girl stepped forward, smiling widely.", viEx: "Một cô gái tóc vàng xinh xắn bước lên phía trước và mỉm cười rạng rỡ." },
+          { word: "pleasant-looking", type: "Tính từ", ipa: "/ˈplezənt ˌlʊkɪŋ/", def: "có vẻ ngoài dễ mến", ex: "Behind her stood her parents, a pleasant-looking couple.", viEx: "Đằng sau cô ấy là bố mẹ cô, một cặp vợ chồng có vẻ ngoài rất dễ mến." },
+          { word: "lap", type: "Danh từ", ipa: "/læp/", def: "lòng (đùi khi ngồi)", ex: "They had two cats, Ping and Pong, who sat on my lap.", viEx: "Họ có hai con mèo, Ping và Pong, chúng ngồi trên lòng tôi." },
+          { word: "cosy", type: "Tính từ", ipa: "/ˈkoʊzi/", def: "ấm cúng", ex: "My room was cosy and warm.", viEx: "Phòng của tôi rất ấm cúng và ấm áp." },
+          { word: "looked out onto a forest", type: "Cụm động từ", ipa: "/lʊkt aʊt ˈɑːntu ə ˈfɔːrɪst/", def: "nhìn ra khu rừng", ex: "We looked out onto a forest.", viEx: "Chúng tôi nhìn ra một khu rừng." },
+          { word: "fresh flowers", type: "Cụm danh từ", ipa: "/freʃ ˈflaʊərz/", def: "hoa tươi", ex: "I put fresh flowers in a vase by the bed.", viEx: "Tôi đặt hoa tươi vào một chiếc bình bên cạnh giường." },
+          { word: "vase", type: "Danh từ", ipa: "/veɪs/", def: "bình hoa", ex: "I put fresh flowers in a vase by the bed.", viEx: "Tôi đặt hoa tươi vào một chiếc bình bên cạnh giường." },
+          { word: "apple pie", type: "Cụm danh từ", ipa: "/ˌæpl ˈpaɪ/", def: "bánh táo", ex: "I asked my mum to make her famous roast chicken and an apple pie.", viEx: "Tôi nhờ mẹ làm món gà quay nổi tiếng và một chiếc bánh táo." },
+          { word: "feel at home", type: "Cụm động từ", ipa: "/fiːl æt hoʊm/", def: "cảm thấy như ở nhà", ex: "We made our guest feel at home.", viEx: "Chúng tôi khiến vị khách cảm thấy như đang ở nhà." },
+          { word: "welcome banner", type: "Cụm danh từ", ipa: "/ˈwelkəm ˈbænər/", def: "biểu ngữ chào mừng", ex: "We made a welcome banner and put it up on the front door.", viEx: "Chúng tôi làm một biểu ngữ chào mừng và treo nó lên cửa trước." }
         ]
       },
       {
@@ -314,11 +362,11 @@
         title: "Activity 3: FOOD CULTURE SHOCK",
         instruction: "Complete these sentences using a word from the text.",
         passage: [
-          { en: "A. CHARLES: In the US, there are only certain things you can eat with your fingers... When I went to South India, though, I realised that it is a whole new skill to learn to eat rice and curry with your fingers... You use your fingertips, never the palm of your hand, and use your thumb to pop it into your mouth.", vi: "A. CHARLES: Ở Mỹ chỉ ăn vài món bằng tay... Sang Nam Ấn Độ, tôi nhận ra ăn bằng tay là cả kỹ năng mới... Dùng đầu ngón tay chứ không dùng lòng bàn tay..." },
-          { en: "B. ALFREDO: For me, the 'fast food' culture always shocks me... Food is part of your identity, so what are you saying about yourself when you eat some rubbish which contains chemicals?", vi: "B. ALFREDO: Đồ ăn nhanh làm tôi sốc... Thức ăn là một phần bản sắc của bạn..." },
-          { en: "C. QIANG SHI: In China, when we go to a restaurant with colleagues, when we are offered something, we say 'No thanks', even though we want it, because the person will definitely repeat the offer. In other countries 'no' means 'no'...", vi: "C. QIANG SHI: Ở Trung Quốc được mời gì hay nói 'Không cảm ơn' dù muốn, vì họ sẽ tiếp tục mời..." },
-          { en: "D. PAULINE: In many parts of the world, meat equates to prosperity, so the idea of going out for a meal and not having meat is alien to them.", vi: "D. PAULINE: Nhiều nơi thịt đồng nghĩa với giàu sang, ăn uống không có thịt là kỳ lạ với họ." },
-          { en: "E. AILEEN: In Australia, we eat cereal. But when I travelled in Asia, I realised that in many places, there is no difference between breakfast and dinner: rice, curry, noodles, soup appeared at breakfast.", vi: "E. AILEEN: Ở Úc ăn ngũ cốc. Sang châu Á thì bữa sáng và bữa tối đều có cơm, mì, cà ri như nhau..." }
+          { en: "A CHARLES: You would think that eating with your fingers would be easy. In the US, there are only certain things you can eat with your fingers, like burgers, for example, and that is easy enough. When I went to South India, though, I realised that it is a whole new skill to learn to eat rice and curry with your fingers. You have to mix the curries together and with the rice and form a ball. Daal is particularly helpful as a kind of glue. You use your fingertips, never the palm of your hand, and use your thumb to pop it into your mouth.", vi: "A CHARLES: Ở Mỹ chỉ ăn vài món bằng tay... Sang Nam Ấn Độ, tôi nhận ra ăn bằng tay là cả kỹ năng mới... Dùng đầu ngón tay chứ không dùng lòng bàn tay..." },
+          { en: "B ALFREDO: For me, when I travel, the 'fast food' culture always shocks me. I can't believe there are people in the world who live on 'junk food' like burgers and just grab a sandwich for lunch. Back home, food is very important to us... Food is part of your identity, so what are you saying about yourself when you eat some rubbish which contains chemicals and goodness knows what else?", vi: "B ALFREDO: Đồ ăn nhanh làm tôi sốc... Thức ăn là một phần bản sắc của bạn..." },
+          { en: "C QIANG SHI: I enjoy trying food from different countries, but what interests me more is the culture and habits surrounding food and eating. In China, when we go to a restaurant with colleagues, when we are offered something, we say 'No thanks', even though we want it, because the person will definitely repeat the offer. In other countries, though, 'no' means 'no'...", vi: "C QIANG SHI: Ở Trung Quốc được mời gì hay nói 'Không cảm ơn' dù muốn, vì họ sẽ tiếp tục mời..." },
+          { en: "D PAULINE: Being a vegetarian is so easy here in the UK that we forget that not everyone in the world understands vegetarianism... In many parts of the world, meat equates to prosperity, so the idea of going out for a meal and not having meat is alien to them.", vi: "D PAULINE: Nhiều nơi thịt đồng nghĩa với giàu sang, ăn uống không có thịt là kỳ lạ với họ." },
+          { en: "E AILEEN: I think breakfast is the meal where food culture really hits you. In Australia, there are certain foods you eat for breakfast and certain foods you don't. We usually eat cereal or toast... But when I travelled in Asia, I realised that in many places, there is no difference between breakfast and dinner: rice, curry, noodles, soup, steamed vegetables and fish all appeared at breakfast.", vi: "E AILEEN: Ở Úc ăn ngũ cốc. Sang châu Á thì bữa sáng và bữa tối đều có cơm, mì, cà ri như nhau..." }
         ],
         questions: [
           { q: "1. In China, if you refuse food, the host will usually _______ the offer.", ans: ["repeat"], loc: "Đoạn C: '...because the person will definitely repeat the offer.'", exp: "Chủ nhà sẽ lặp lại lời mời ('repeat')." },
@@ -333,7 +381,50 @@
           { qWord: "eating represents", pWord: "equates to", note: "Đại diện cho / đồng nghĩa với" },
           { qWord: "no difference between", pWord: "all appeared at breakfast", note: "Không có sự phân biệt / đều xuất hiện" }
         ],
-        vocab: [{ word: "prosperity", type: "n", ipa: "/prɒsˈper.ə.ti/", def: "Sự thịnh vượng", ex: "Economic prosperity.", viEx: "Sự thịnh vượng kinh tế." }]
+        vocab: [
+          { word: "China", type: "Danh từ riêng", ipa: "/ˈtʃaɪnə/", def: "Trung Quốc", ex: "In China, when we go to a restaurant with colleagues, when we are offered something, we say 'No thanks'.", viEx: "Ở Trung Quốc, khi chúng tôi đến nhà hàng với đồng nghiệp và được mời món gì đó, chúng tôi sẽ nói: 'Không, cảm ơn.'" },
+          { word: "refuse", type: "Động từ", ipa: "/rɪˈfjuːz/", def: "từ chối", ex: "If you refuse the food, the host may offer it again.", viEx: "Nếu bạn từ chối món ăn, chủ nhà có thể sẽ mời lại." },
+          { word: "host", type: "Danh từ", ipa: "/hoʊst/", def: "chủ nhà", ex: "The host welcomed us with a big smile.", viEx: "Chủ nhà chào đón chúng tôi bằng một nụ cười tươi." },
+          { word: "offer", type: "Danh từ", ipa: "/ˈɔːfər/", def: "lời mời; lời đề nghị", ex: "The person will definitely repeat the offer.", viEx: "Người đó chắc chắn sẽ mời lại." },
+          { word: "plays an important role", type: "Cụm động từ", ipa: "/pleɪz ən ɪmˈpɔːrtnt roʊl/", def: "đóng vai trò quan trọng", ex: "Food plays an important role in our lives.", viEx: "Thức ăn đóng vai trò quan trọng trong cuộc sống của chúng ta." },
+          { word: "India", type: "Danh từ riêng", ipa: "/ˈɪndiə/", def: "Ấn Độ", ex: "When I went to South India, though, I realised that it is a whole new skill to learn to eat rice and curry with your fingers.", viEx: "Tuy nhiên, khi tôi đến miền Nam Ấn Độ, tôi nhận ra rằng ăn cơm và cà ri bằng tay là một kỹ năng hoàn toàn mới." },
+          { word: "use", type: "Động từ", ipa: "/juːz/", def: "sử dụng", ex: "You use your fingertips, never the palm of your hand, and use your thumb to pop it into your mouth.", viEx: "Bạn dùng đầu ngón tay, không bao giờ dùng lòng bàn tay, rồi dùng ngón cái để đưa thức ăn vào miệng." },
+          { word: "represents", type: "Động từ", ipa: "/ˌreprɪˈzents/", def: "tượng trưng cho; thể hiện", ex: "In some countries, meat represents prosperity.", viEx: "Ở một số quốc gia, thịt tượng trưng cho sự thịnh vượng." },
+          { word: "no difference", type: "Cụm danh từ", ipa: "/noʊ ˈdɪfrəns/", def: "không có sự khác biệt", ex: "In many places, there is no difference between breakfast and dinner.", viEx: "Ở nhiều nơi, không có sự khác biệt giữa bữa sáng và bữa tối." },
+          { word: "breakfast", type: "Danh từ", ipa: "/ˈbrekfəst/", def: "bữa sáng", ex: "I think breakfast is the meal where food culture really hits you.", viEx: "Tôi nghĩ bữa sáng là bữa ăn mà bạn cảm nhận rõ nhất sự khác biệt về văn hóa ẩm thực." },
+          { word: "dinner", type: "Danh từ", ipa: "/ˈdɪnər/", def: "bữa tối", ex: "We cook fresh food for lunch and dinner and sit down and eat as a family.", viEx: "Chúng tôi nấu thức ăn tươi cho bữa trưa và bữa tối rồi cùng ngồi ăn như một gia đình." },
+          { word: "fingers", type: "Danh từ số nhiều", ipa: "/ˈfɪŋɡərz/", def: "các ngón tay", ex: "It is a whole new skill to learn to eat rice and curry with your fingers.", viEx: "Ăn cơm và cà ri bằng tay là một kỹ năng hoàn toàn mới." },
+          { word: "mix", type: "Động từ", ipa: "/mɪks/", def: "trộn", ex: "You have to mix the curries together and with the rice and form a ball.", viEx: "Bạn phải trộn các món cà ri với nhau và với cơm rồi vo thành một viên." },
+          { word: "curries", type: "Danh từ số nhiều", ipa: "/ˈkɝːiz/", def: "các món cà ri", ex: "You have to mix the curries together and with the rice and form a ball.", viEx: "Bạn phải trộn các món cà ri với nhau và với cơm rồi vo thành một viên." },
+          { word: "form a ball", type: "Cụm động từ", ipa: "/fɔːrm ə bɔːl/", def: "vo thành một viên", ex: "You have to mix the curries together and with the rice and form a ball.", viEx: "Bạn phải trộn các món cà ri với nhau và với cơm rồi vo thành một viên." },
+          { word: "particularly helpful", type: "Cụm tính từ", ipa: "/pərˈtɪkjələrli ˈhelpfəl/", def: "đặc biệt hữu ích", ex: "Daal is particularly helpful as a kind of glue.", viEx: "Món daal đặc biệt hữu ích vì nó giống như một loại keo kết dính." },
+          { word: "glue", type: "Danh từ", ipa: "/ɡluː/", def: "keo dán", ex: "Daal is particularly helpful as a kind of glue.", viEx: "Món daal đặc biệt hữu ích vì nó giống như một loại keo kết dính." },
+          { word: "fingertips", type: "Danh từ số nhiều", ipa: "/ˈfɪŋɡərtɪps/", def: "đầu ngón tay", ex: "You use your fingertips, never the palm of your hand.", viEx: "Bạn dùng đầu ngón tay, không bao giờ dùng lòng bàn tay." },
+          { word: "palm of your hand", type: "Cụm danh từ", ipa: "/pɑːm əv jʊr hænd/", def: "lòng bàn tay", ex: "You use your fingertips, never the palm of your hand.", viEx: "Bạn dùng đầu ngón tay, không bao giờ dùng lòng bàn tay." },
+          { word: "thumb", type: "Danh từ", ipa: "/θʌm/", def: "ngón cái", ex: "Use your thumb to pop it into your mouth.", viEx: "Hãy dùng ngón cái để đưa thức ăn vào miệng." },
+          { word: "pop it into your mouth", type: "Cụm động từ", ipa: "/pɑːp ɪt ˈɪntuː jʊr maʊθ/", def: "đưa nó vào miệng", ex: "Use your thumb to pop it into your mouth.", viEx: "Hãy dùng ngón cái để đưa thức ăn vào miệng." },
+          { word: "identity", type: "Danh từ", ipa: "/aɪˈdentəti/", def: "bản sắc; danh tính", ex: "Food is part of your identity.", viEx: "Ẩm thực là một phần bản sắc của bạn." },
+          { word: "rubbish", type: "Danh từ", ipa: "/ˈrʌbɪʃ/", def: "đồ ăn tệ; rác rưởi", ex: "What are you saying about yourself when you eat some rubbish?", viEx: "Bạn đang nói gì về bản thân khi ăn những đồ ăn rác?" },
+          { word: "contains chemicals", type: "Cụm động từ", ipa: "/kənˈteɪnz ˈkemɪkəlz/", def: "chứa hóa chất", ex: "...when you eat some rubbish which contains chemicals?", viEx: "...khi bạn ăn những đồ ăn rác chứa hóa chất?" },
+          { word: "goodness", type: "Danh từ", ipa: "/ˈɡʊdnəs/", def: "chất tốt; điều tốt", ex: "...contains chemicals and goodness knows what else.", viEx: "...chứa hóa chất và đủ thứ khác nữa." },
+          { word: "colleagues", type: "Danh từ số nhiều", ipa: "/ˈkɑːliːɡz/", def: "đồng nghiệp", ex: "In China, when we go to a restaurant with colleagues...", viEx: "Ở Trung Quốc, khi chúng tôi đi nhà hàng cùng đồng nghiệp..." },
+          { word: "even though", type: "Liên từ", ipa: "/ˈiːvən ðoʊ/", def: "mặc dù", ex: "...we say 'No thanks', even though we want it...", viEx: "...chúng tôi nói 'Không, cảm ơn', mặc dù chúng tôi muốn nhận." },
+          { word: "definitely", type: "Trạng từ", ipa: "/ˈdefɪnətli/", def: "chắc chắn", ex: "The person will definitely repeat the offer.", viEx: "Người đó chắc chắn sẽ mời lại." },
+          { word: "repeat the offer", type: "Cụm động từ", ipa: "/rɪˈpiːt ði ˈɔːfər/", def: "mời lại; nhắc lại đề nghị", ex: "The person will definitely repeat the offer.", viEx: "Người đó chắc chắn sẽ mời lại." },
+          { word: "realise", type: "Động từ", ipa: "/ˈriːəlaɪz/", def: "nhận ra", ex: "I realised that it is a whole new skill.", viEx: "Tôi nhận ra đó là một kỹ năng hoàn toàn mới." },
+          { word: "concept", type: "Danh từ", ipa: "/ˈkɑːnsept/", def: "khái niệm", ex: "They don't even realise that there is a concept of not eating meat.", viEx: "Họ thậm chí không nhận ra có khái niệm không ăn thịt." },
+          { word: "ethical reasons", type: "Cụm danh từ", ipa: "/ˈeθɪkl ˈriːzənz/", def: "lý do đạo đức", ex: "...not eating meat for ethical reasons.", viEx: "...không ăn thịt vì lý do đạo đức." },
+          { word: "equates to", type: "Cụm động từ", ipa: "/ɪˈkweɪts tuː/", def: "đồng nghĩa với; tương đương", ex: "Meat equates to prosperity.", viEx: "Thịt được xem là biểu tượng của sự thịnh vượng." },
+          { word: "prosperity", type: "Danh từ", ipa: "/prɑːˈsperəti/", def: "sự thịnh vượng", ex: "In many parts of the world, meat equates to prosperity.", viEx: "Ở nhiều nơi trên thế giới, thịt được xem là biểu tượng của sự thịnh vượng." },
+          { word: "alien", type: "Tính từ", ipa: "/ˈeɪliən/", def: "xa lạ; kỳ quặc", ex: "The idea of going out for a meal and not having meat is alien to them.", viEx: "Ý tưởng đi ăn ngoài mà không có thịt là điều rất xa lạ đối với họ." },
+          { word: "food culture", type: "Cụm danh từ", ipa: "/fuːd ˈkʌltʃər/", def: "văn hóa ẩm thực", ex: "Breakfast is the meal where food culture really hits you.", viEx: "Bữa sáng là bữa ăn mà bạn cảm nhận rõ nhất văn hóa ẩm thực." },
+          { word: "hits", type: "Động từ", ipa: "/hɪts/", def: "tác động mạnh đến", ex: "Food culture really hits you.", viEx: "Văn hóa ẩm thực thực sự tác động mạnh đến bạn." },
+          { word: "certain foods", type: "Cụm danh từ", ipa: "/ˈsɝːtn fuːdz/", def: "một số thực phẩm nhất định", ex: "There are certain foods you eat for breakfast.", viEx: "Có một số loại thực phẩm bạn ăn vào bữa sáng." },
+          { word: "cereal", type: "Danh từ", ipa: "/ˈsɪriəl/", def: "ngũ cốc", ex: "We usually eat cereal or toast.", viEx: "Chúng tôi thường ăn ngũ cốc hoặc bánh mì nướng." },
+          { word: "toast", type: "Danh từ", ipa: "/toʊst/", def: "bánh mì nướng", ex: "We usually eat cereal or toast.", viEx: "Chúng tôi thường ăn ngũ cốc hoặc bánh mì nướng." },
+          { word: "yoghurt", type: "Danh từ", ipa: "/ˈjoʊɡərt/", def: "sữa chua", ex: "Maybe yoghurt and fruit.", viEx: "Có thể là sữa chua và trái cây." },
+          { word: "face", type: "Động từ", ipa: "/feɪs/", def: "chấp nhận; đối mặt", ex: "I just can't face them at breakfast!", viEx: "Tôi không thể ăn chúng vào bữa sáng được!" }
+        ]
       },
       {
         id: 4,
@@ -341,9 +432,9 @@
         title: "Activity 4: OUR FRIENDS AND PROTECTORS",
         instruction: "Write NO MORE THAN TWO/THREE WORDS from the passage for each answer.",
         passage: [
-          { en: "A. Dolphins are known as friendly, intelligent creatures that have a special relationship with humans. Experts think they may understand that humans are similar to them and try to protect them from predators and other dangers.", vi: "Cá heo bảo vệ con người vì thấy con người tương đồng với chúng..." },
-          { en: "B. Wildlife filmmaker Hardy Jones was filming a group of dolphins, when a large shark swam towards him ready to attack. Four dolphins came to his rescue and drove the shark away. Jones was a well-known campaigner against the killing of dolphins.", vi: "Hardy Jones được cá heo cứu khỏi cá mập. Ông là nhà vận động bảo vệ cá heo nổi tiếng..." },
-          { en: "E. In California, humpback whales were protecting migrating grey whales from attacks by orcas (killer whales) over a period of at least seven hours. In China, Yang Yun couldn't move her legs due to freezing temperatures. Beluga whale Mila gripped Yang Yun's leg in her mouth and pushed Yun to the surface.", vi: "Cá voi lưng gù bảo vệ đàn cá voi xám di cư trước cá voi sát thủ hơn 7 giờ. Cá voi trắng Mila ngậm chân kéo thợ lặn Yang Yun lên..." }
+          { en: "A When asked their favourite animals, many people answer 'dolphins'. They are known as friendly, intelligent creatures that have a special relationship with humans. Experts think they may understand that humans are similar to them and try to protect them from predators and other dangers.", vi: "Cá heo bảo vệ con người vì thấy con người tương đồng với chúng..." },
+          { en: "B There are many stories about dolphins protecting humans from sharks. Wildlife filmmaker Hardy Jones was filming a group of dolphins, when a large shark swam towards him ready to attack. Four dolphins came to his rescue and drove the shark away. In fact, Jones was a well-known campaigner against the killing of dolphins.", vi: "Hardy Jones được cá heo cứu khỏi cá mập. Ông là nhà vận động bảo vệ cá heo nổi tiếng..." },
+          { en: "E Whales have also been known to protect both humans and other mammals. In California, in 2012, a BBC Planet Earth film crew filmed a group of humpback whales who were protecting migrating grey whales from attacks by orcas over a period of at least seven hours. In China, Yang Yun found she couldn't move her legs due to the freezing temperatures. Mila gripped Yang Yun's leg in her mouth and pushed Yun to the surface.", vi: "Cá voi lưng gù bảo vệ đàn cá voi xám di cư trước cá voi sát thủ hơn 7 giờ. Cá voi trắng Mila ngậm chân kéo thợ lặn Yang Yun lên..." }
         ],
         questions: [
           { q: "1. A pod of dolphins saved the life of a man called _______ while he was videoing them.", ans: ["hardy jones"], loc: "Đoạn B: 'filmmaker Hardy Jones was filming a group of dolphins...'", exp: "Người được cứu là 'Hardy Jones'." },
@@ -361,7 +452,29 @@
           { qWord: "travelling from one place to another", pWord: "migrating", note: "Di cư từ nơi này sang nơi khác" },
           { qWord: "taking hold of", pWord: "gripped in her mouth", note: "Ngoạm lấy, giữ chặt" }
         ],
-        vocab: [{ word: "predator", type: "n", ipa: "/ˈpred.ə.tər/", def: "Động vật săn mồi", ex: "Ocean predator.", viEx: "Loài săn mồi đại dương." }]
+        vocab: [
+          { word: "pod of dolphins", type: "Cụm danh từ", ipa: "/pɑːd əv ˈdɑːlfɪnz/", def: "đàn cá heo", ex: "Four people were saved from a great white shark by a pod of dolphins.", viEx: "Bốn người đã được một đàn cá heo cứu khỏi một con cá mập trắng lớn." },
+          { word: "famous", type: "Tính từ", ipa: "/ˈfeɪməs/", def: "nổi tiếng", ex: "Hardy Jones was famous for protecting dolphins.", viEx: "Hardy Jones nổi tiếng vì bảo vệ cá heo." },
+          { word: "protection", type: "Danh từ", ipa: "/prəˈtekʃən/", def: "sự bảo vệ", ex: "Dolphins' protection of humans might not be just automatic.", viEx: "Việc cá heo bảo vệ con người có thể không chỉ đơn thuần là bản năng." },
+          { word: "catch", type: "Động từ", ipa: "/kætʃ/", def: "bắt", ex: "Orcas tried to catch the whales.", viEx: "Những con cá voi sát thủ cố gắng bắt những con cá voi khác." },
+          { word: "hurt", type: "Động từ", ipa: "/hɝːt/", def: "làm hại; làm bị thương", ex: "The shark wanted to hurt the swimmer.", viEx: "Con cá mập muốn làm hại người bơi." },
+          { word: "travelling", type: "Động từ", ipa: "/ˈtrævəlɪŋ/", def: "di chuyển", ex: "The whales were travelling together.", viEx: "Những con cá voi đang di chuyển cùng nhau." },
+          { word: "migrating whales", type: "Cụm danh từ", ipa: "/ˈmaɪɡreɪtɪŋ weɪlz/", def: "những con cá voi đang di cư", ex: "A group of humpback whales were protecting migrating grey whales.", viEx: "Một nhóm cá voi lưng gù đang bảo vệ những con cá voi xám di cư." },
+          { word: "whole incident", type: "Cụm danh từ", ipa: "/hoʊl ˈɪnsɪdənt/", def: "toàn bộ sự việc", ex: "The whole incident lasted for many hours.", viEx: "Toàn bộ sự việc kéo dài nhiều giờ." },
+          { word: "diver", type: "Danh từ", ipa: "/ˈdaɪvər/", def: "thợ lặn", ex: "A scuba diver was hit by a boat.", viEx: "Một thợ lặn bình dưỡng khí đã bị một chiếc thuyền đâm." },
+          { word: "get to the surface", type: "Cụm động từ", ipa: "/ɡet tə ðə ˈsɝːfɪs/", def: "lên mặt nước", ex: "She couldn't get to the surface by herself.", viEx: "Cô ấy không thể tự mình lên mặt nước." },
+          { word: "icy waters", type: "Cụm danh từ", ipa: "/ˈaɪsi ˈwɔːtərz/", def: "vùng nước băng giá", ex: "The diver was trapped in icy waters.", viEx: "Người thợ lặn bị mắc kẹt trong vùng nước băng giá." },
+          { word: "unable to", type: "Cụm tính từ", ipa: "/ʌnˈeɪbl tə/", def: "không thể", ex: "Yang Yun found she couldn't move her legs.", viEx: "Yang Yun nhận ra cô ấy không thể cử động chân." },
+          { word: "saved her life", type: "Cụm động từ", ipa: "/seɪvd hɚ laɪf/", def: "cứu sống cô ấy", ex: "Mila gripped Yang Yun's leg and saved her life.", viEx: "Mila ngoạm chân Yang Yun và cứu sống cô." },
+          { word: "taking hold", type: "Cụm động từ", ipa: "/ˈteɪkɪŋ hoʊld/", def: "nắm lấy; giữ chặt", ex: "The dolphin was taking hold of the diver's leg.", viEx: "Con cá heo đang nắm lấy chân người thợ lặn." },
+          { word: "push upwards", type: "Cụm động từ", ipa: "/pʊʃ ˈʌpwərdz/", def: "đẩy lên trên", ex: "The whale pushed the diver upwards.", viEx: "Con cá voi đẩy người thợ lặn lên trên." },
+          { word: "came to his rescue", type: "Cụm động từ", ipa: "/keɪm tə hɪz ˈreskjuː/", def: "đến giải cứu anh ấy", ex: "Four dolphins came to his rescue and drove the shark away.", viEx: "Bốn con cá heo đã đến giải cứu anh ấy và đuổi cá mập đi." },
+          { word: "campaigner", type: "Danh từ", ipa: "/kæmˈpeɪnər/", def: "nhà vận động", ex: "Jones was a well-known campaigner against the killing of dolphins.", viEx: "Jones là nhà vận động nổi tiếng chống giết hại cá heo." },
+          { word: "killer whales", type: "Cụm danh từ", ipa: "/ˈkɪlər weɪlz/", def: "cá voi sát thủ", ex: "Migrating grey whales from attacks by orcas (killer whales).", viEx: "Những con cá voi xám di cư khỏi cuộc tấn công của cá voi sát thủ." },
+          { word: "move her legs", type: "Cụm động từ", ipa: "/muːv hɚ leɡz/", def: "cử động chân", ex: "Yang Yun found she couldn't move her legs due to the freezing temperatures.", viEx: "Yang Yun nhận ra cô không thể cử động chân vì nhiệt độ đóng băng." },
+          { word: "gripped", type: "Động từ", ipa: "/ɡrɪpt/", def: "giữ chặt; ngoạm chặt", ex: "Mila gripped Yang Yun's leg in her mouth.", viEx: "Mila ngoạm chặt chân của Yang Yun bằng miệng." },
+          { word: "surface", type: "Danh từ", ipa: "/ˈsɝːfɪs/", def: "mặt nước; bề mặt", ex: "Pushed Yun to the surface, saving her life.", viEx: "Đẩy Yun lên mặt nước, cứu sống cô." }
+        ]
       },
       {
         id: 5,
@@ -369,9 +482,9 @@
         title: "Activity 5: THE MODERN ZOO",
         instruction: "Choose NO MORE THAN TWO WORDS from the passage for each answer.",
         passage: [
-          { en: "Until the late twentieth century, the main purpose of zoos was for entertainment... In 1959, famous wildlife expert Gerald Durrell opened the first zoo which put conservation of animals first.", vi: "Mục đích ban đầu là giải trí. Năm 1959 Gerald Durrell mở sở thú ưu tiên bảo tồn." },
-          { en: "From the 1990s, zoos began to see their main role as saving threatened species... aim is to reintroduce endangered species into their natural habitats. Borneo Orangutan Rescue teaches orangutans how to live in the wild.", vi: "Đưa loài nguy cấp về môi trường tự nhiên (natural habitats). Học cách sinh tồn hoang dã (the wild)." },
-          { en: "Zoos try to provide 'enrichment' for the animals to improve their wellbeing... webcams enable visitors to keep up with animals.", vi: "Cung cấp sự phong phú (enrichment) và webcam để xem từ xa." }
+          { en: "Until the late twentieth century, the main purpose of zoos was for entertainment. They existed to give people the chance to see animals they could not see in the wild. In 1959, famous wildlife expert Gerald Durrell opened the first zoo which put conservation of animals first.", vi: "Mục đích ban đầu là giải trí. Năm 1959 Gerald Durrell mở sở thú ưu tiên bảo tồn." },
+          { en: "From the 1990s, zoos began to see their main role as saving the most threatened species... Often the aim is to reintroduce endangered species into their natural habitats. In Indonesia, Borneo Orangutan Rescue teaches orangutans how to live in the wild.", vi: "Đưa loài nguy cấp về môi trường tự nhiên (natural habitats). Học cách sinh tồn hoang dã (the wild)." },
+          { en: "Zoos try to provide 'enrichment' for the animals to improve their wellbeing... In many zoos there are webcams in some enclosures so visitors can keep up with their favourite animals between visits.", vi: "Cung cấp sự phong phú (enrichment) và webcam để xem từ xa." }
         ],
         questions: [
           { q: "1. Before the 1990s, zoos existed mainly for _______", ans: ["entertainment"], loc: "Đoạn 1: 'the main purpose of zoos was for entertainment.'", exp: "Giải trí ('entertainment')." },
@@ -386,15 +499,41 @@
           { qWord: "return them to", pWord: "reintroduce into", note: "Tái thả về nơi cư trú tự nhiên" },
           { qWord: "view from their homes", pWord: "webcams in enclosures", note: "Xem qua máy quay tại gia" }
         ],
-        vocab: [{ word: "conservation", type: "n", ipa: "/ˌkɒn.səˈveɪ.ʃən/", def: "Sự bảo tồn", ex: "Wildlife conservation.", viEx: "Bảo tồn động vật hoang dã." }]
+        vocab: [
+          { word: "existed", type: "Động từ", ipa: "/ɪɡˈzɪstɪd/", def: "tồn tại", ex: "They existed to give people the chance to see animals.", viEx: "Các sở thú tồn tại để cho mọi người cơ hội ngắm nhìn động vật." },
+          { word: "mainly", type: "Trạng từ", ipa: "/ˈmeɪnli/", def: "chủ yếu", ex: "Zoos were mainly for entertainment in the past.", viEx: "Trước đây, sở thú chủ yếu phục vụ mục đích giải trí." },
+          { word: "focus on", type: "Cụm động từ", ipa: "/ˈfoʊkəs ɑːn/", def: "tập trung vào", ex: "Each zoo focuses on a small number of species.", viEx: "Mỗi sở thú tập trung vào một số ít loài động vật." },
+          { word: "protecting", type: "Động từ", ipa: "/prəˈtektɪŋ/", def: "bảo vệ", ex: "They now play an important role in protecting animals.", viEx: "Ngày nay, các sở thú đóng vai trò quan trọng trong việc bảo vệ động vật." },
+          { word: "introduced", type: "Động từ", ipa: "/ˌɪntrəˈduːst/", def: "triển khai; giới thiệu", ex: "Many zoos introduced new breeding programmes.", viEx: "Nhiều sở thú đã triển khai các chương trình nhân giống mới." },
+          { word: "programmes", type: "Danh từ số nhiều", ipa: "/ˈproʊɡræmz/", def: "chương trình", ex: "It also helps to coordinate breeding programmes.", viEx: "Tổ chức này cũng giúp điều phối các chương trình nhân giống." },
+          { word: "aim", type: "Danh từ", ipa: "/eɪm/", def: "mục tiêu", ex: "Often the aim is to reintroduce endangered species.", viEx: "Mục tiêu thường là tái thả các loài có nguy cơ tuyệt chủng." },
+          { word: "breed threatened animals", type: "Cụm động từ", ipa: "/briːd ˈθretn̩d ˈænɪməlz/", def: "nhân giống các loài bị đe dọa", ex: "Many zoos breed threatened animals to protect them.", viEx: "Nhiều sở thú nhân giống các loài động vật bị đe dọa để bảo tồn." },
+          { word: "survive", type: "Động từ", ipa: "/sɚˈvaɪv/", def: "sinh tồn", ex: "Young animals must learn how to survive in the wild.", viEx: "Những con vật non phải học cách sinh tồn trong tự nhiên." },
+          { word: "challenging", type: "Tính từ", ipa: "/ˈtʃælɪndʒɪŋ/", def: "mang tính thử thách", ex: "The activities are challenging for the animals.", viEx: "Các hoạt động này mang tính thử thách đối với động vật." },
+          { word: "climbing equipment", type: "Cụm danh từ", ipa: "/ˈklaɪmɪŋ ɪˈkwɪpmənt/", def: "thiết bị leo trèo", ex: "The zoo provides climbing equipment for monkeys.", viEx: "Sở thú cung cấp các thiết bị leo trèo cho khỉ." },
+          { word: "species", type: "Danh từ", ipa: "/ˈspiːʃiːz/", def: "loài", ex: "Each zoo focuses on a small number of species.", viEx: "Mỗi sở thú tập trung vào một số ít loài động vật." },
+          { word: "enable", type: "Động từ", ipa: "/ɪˈneɪbl/", def: "cho phép", ex: "Webcams enable people to see animals from home.", viEx: "Camera trực tuyến cho phép mọi người quan sát động vật tại nhà." },
+          { word: "public", type: "Danh từ", ipa: "/ˈpʌblɪk/", def: "công chúng", ex: "Technology has been used to engage the public.", viEx: "Công nghệ được dùng để thu hút công chúng quan tâm hơn." },
+          { word: "view", type: "Động từ", ipa: "/vjuː/", def: "xem; quan sát", ex: "People can view zoo animals from their homes.", viEx: "Mọi người có thể quan sát động vật trong sở thú ngay từ nhà." },
+          { word: "entertainment", type: "Danh từ", ipa: "/ˌentərˈteɪnmənt/", def: "sự giải trí", ex: "Until the late twentieth century, the main purpose was entertainment.", viEx: "Cho đến cuối thế kỷ 20, mục đích chính là phục vụ giải trí." },
+          { word: "conservation", type: "Danh từ", ipa: "/ˌkɑːnsərˈveɪʃn/", def: "sự bảo tồn", ex: "Put conservation of animals first.", viEx: "Đặt việc bảo tồn động vật lên hàng đầu." },
+          { word: "breeding programmes", type: "Cụm danh từ", ipa: "/ˈbriːdɪŋ ˈproʊɡræmz/", def: "chương trình nhân giống", ex: "Saved through breeding programmes run by zoos.", viEx: "Được cứu nhờ các chương trình nhân giống của sở thú." },
+          { word: "reintroduce", type: "Động từ", ipa: "/ˌriːˌɪntrəˈduːs/", def: "tái thả tự nhiên", ex: "The aim is to reintroduce endangered species into their natural habitats.", viEx: "Mục tiêu là tái thả các loài nguy cấp về môi trường sống tự nhiên." },
+          { word: "endangered species", type: "Cụm danh từ", ipa: "/ɪnˈdeɪndʒərd ˈspiːʃiːz/", def: "loài có nguy cơ tuyệt chủng", ex: "Protect endangered species from extinction.", viEx: "Bảo vệ các loài có nguy cơ tuyệt chủng khỏi sự biến mất." },
+          { word: "natural habitats", type: "Cụm danh từ", ipa: "/ˈnætʃrəl ˈhæbɪtæts/", def: "môi trường sống tự nhiên", ex: "Return them to their natural habitats.", viEx: "Đưa chúng trở lại môi trường sống tự nhiên." },
+          { word: "the wild", type: "Cụm danh từ", ipa: "/ðə waɪld/", def: "môi trường hoang dã", ex: "Teaches orangutans how to live in the wild.", viEx: "Dạy đười ươi cách sinh sống ngoài tự nhiên." },
+          { word: "enrichment", type: "Danh từ", ipa: "/ɪnˈrɪtʃmənt/", def: "hoạt động làm phong phú", ex: "Provide enrichment for the animals to improve wellbeing.", viEx: "Cung cấp hoạt động làm phong phú môi trường sống để cải thiện sức khỏe thú." },
+          { word: "webcams", type: "Danh từ số nhiều", ipa: "/ˈwebˌkæmz/", def: "camera trực tuyến", ex: "In many zoos there are webcams in some enclosures.", viEx: "Nhiều sở thú có lắp camera trực tuyến trong các khu chuồng." },
+          { word: "enclosures", type: "Danh từ số nhiều", ipa: "/ɪnˈkloʊʒərz/", def: "khu chuồng nuôi nhốt", ex: "Visitors can view animals in their enclosures.", viEx: "Du khách có thể ngắm các loài vật trong khu chuồng của chúng." }
+        ]
       },
       {
         id: 6,
         part: "02. DẠNG BÀI SUMMARY COMPLETION",
         title: "Activity 6: UNUSUAL SPORTS",
-        instruction: "Complete summary using words A-L: [A boring, B change, C clever, D feature, E horses, F join, G mixed, H moving, I serious, J sport, K strange, L trampolines]",
+        instruction: "Complete summary: [A boring, B change, C clever, D feature, E horses, F join, G mixed, H moving, I serious, J sport, K strange, L trampolines]",
         passage: [
-          { en: "There are plenty of new and unusual sports out there... mix of existing sports, with a local element added. Buzkashi is played on horseback. Chess boxing is a classic mix of brains and brawn where you switch quickly between the two.", vi: "Các môn thể thao lạ kết hợp nhiều yếu tố..." }
+          { en: "There are plenty of new and unusual sports out there... Many of these are a mix of existing sports, sometimes with a local element added. Buzkashi involves players on horseback trying to get hold of a dead goat. Chess boxing describes itself as 'a classic mix of brains and brawn' where players need to be able to switch quickly between the two.", vi: "Các môn thể thao lạ kết hợp nhiều yếu tố..." }
         ],
         questions: [
           { q: "1. You can try a number of [1] _______ new sports.", ans: ["k", "strange", "k (strange)"], loc: "unusual sports -> strange", exp: "K (strange) đồng nghĩa với unusual." },
@@ -412,7 +551,18 @@
           { qWord: "switch quickly", pWord: "change rapidly", note: "Chuyển trạng thái mau lẹ" },
           { qWord: "brains", pWord: "clever", note: "Đầu óc / thông minh" }
         ],
-        vocab: [{ word: "brawn", type: "n", ipa: "/brɔːn/", def: "Sức mạnh cơ bắp", ex: "Brains and brawn.", viEx: "Trí tuệ và cơ bắp." }]
+        vocab: [
+          { word: "get bored with", type: "Cụm động từ", ipa: "/ɡet bɔːrd wɪð/", def: "chán ngấy; chán", ex: "Do you ever get bored with the same old sports?", viEx: "Bạn có bao giờ cảm thấy chán những môn thể thao quen thuộc không?" },
+          { word: "same old sports", type: "Cụm danh từ", ipa: "/seɪm oʊld spɔːrts/", def: "môn thể thao cũ kỹ", ex: "Tired of the same old sports.", viEx: "Chán những môn thể thao quen thuộc cũ kỹ." },
+          { word: "tired of", type: "Cụm tính từ", ipa: "/ˈtaɪərd əv/", def: "chán", ex: "Tired of tennis, fed up with football.", viEx: "Chán quần vợt, ngán bóng đá." },
+          { word: "unusual sports", type: "Cụm danh từ", ipa: "/ʌnˈjuːʒuəl spɔːrts/", def: "những môn thể thao độc đáo", ex: "Plenty of new and unusual sports to try.", viEx: "Rất nhiều môn thể thao độc đáo mới lạ để thử." },
+          { word: "local element", type: "Cụm danh từ", ipa: "/ˈloʊkl ˈelɪmənt/", def: "yếu tố địa phương", ex: "With a local element added.", viEx: "Được bổ sung thêm yếu tố địa phương." },
+          { word: "horseback", type: "Danh từ", ipa: "/ˈhɔːrsbæk/", def: "lưng ngựa", ex: "Players on horseback trying to get hold of a dead goat.", viEx: "Người chơi trên lưng ngựa tranh giành con dê chết." },
+          { word: "dead goat", type: "Cụm danh từ", ipa: "/ded ɡoʊt/", def: "con dê chết", ex: "Get hold of a dead goat.", viEx: "Giành lấy một con dê chết." },
+          { word: "Olympic status", type: "Cụm danh từ", ipa: "/əˈlɪmpɪk ˈsteɪtəs/", def: "tư cách môn Olympic", ex: "Hope to get Olympic status for the sport.", viEx: "Hy vọng môn này được công nhận là môn thi đấu Olympic." },
+          { word: "switch quickly", type: "Cụm động từ", ipa: "/swɪtʃ ˈkwɪkli/", def: "chuyển đổi nhanh chóng", ex: "Be able to switch quickly between the two.", viEx: "Có khả năng chuyển đổi nhanh chóng giữa hai môn." },
+          { word: "brawn", type: "Danh từ", ipa: "/brɔːn/", def: "sức mạnh cơ bắp", ex: "A classic mix of brains and brawn.", viEx: "Sự kết hợp kinh điển giữa trí tuệ và cơ bắp." }
+        ]
       },
       {
         id: 7,
@@ -438,7 +588,17 @@
           { qWord: "get over barriers", pWord: "overcoming barriers", note: "Vượt qua rào cản" },
           { qWord: "focus on individual", pWord: "personal development", note: "Phát triển cá nhân" }
         ],
-        vocab: [{ word: "obstacle", type: "n", ipa: "/ˈɒb.stə.kəl/", def: "Vật cản", ex: "Jump over obstacles.", viEx: "Nhảy qua chướng ngại vật." }]
+        vocab: [
+          { word: "adaptability", type: "Danh từ", ipa: "/əˌdæptəˈbɪləti/", def: "khả năng thích nghi", ex: "Parkour teaches adaptability in different situations.", viEx: "Parkour rèn luyện khả năng thích nghi trong nhiều tình huống." },
+          { word: "freedom", type: "Danh từ", ipa: "/ˈfriːdəm/", def: "sự tự do", ex: "It is about freedom and self-expression.", viEx: "Đó là về sự tự do và thể hiện bản thân." },
+          { word: "overcoming", type: "Động từ", ipa: "/ˌoʊvərˈkʌmɪŋ/", def: "vượt qua", ex: "Overcoming physical and mental barriers.", viEx: "Vượt qua rào cản thể chất và tinh thần." },
+          { word: "discipline", type: "Danh từ", ipa: "/ˈdɪsəplɪn/", def: "bộ môn; kỷ luật", ex: "Parkour is more than a sport discipline.", viEx: "Parkour không chỉ đơn thuần là một bộ môn thể thao." },
+          { word: "barriers", type: "Danh từ số nhiều", ipa: "/ˈbæriərz/", def: "rào cản", ex: "Getting over mental as well as physical barriers.", viEx: "Vượt qua rào cản tinh thần cũng như thể chất." },
+          { word: "conflicts", type: "Động từ", ipa: "/kənˈflɪkts/", def: "mâu thuẫn; đi ngược lại", ex: "Conflicts with the values of parkour.", viEx: "Đi ngược lại các giá trị của parkour." },
+          { word: "creativity", type: "Danh từ", ipa: "/ˌkriːeɪˈtɪvəti/", def: "sự sáng tạo", ex: "Parkour encourages creativity.", viEx: "Parkour khuyến khích sự sáng tạo." },
+          { word: "obstacle", type: "Danh từ", ipa: "/ˈɑːbstəkəl/", def: "chướng ngại vật", ex: "Based on military obstacle course training.", viEx: "Dựa trên việc huấn luyện vượt chướng ngại vật quân đội." },
+          { word: "self-expression", type: "Danh từ", ipa: "/ˌself ɪkˈspreʃn/", def: "sự thể hiện bản thân", ex: "It is about freedom and self-expression.", viEx: "Đó là về sự tự do và thể hiện bản thân." }
+        ]
       },
       {
         id: 8,
@@ -461,7 +621,13 @@
           { qWord: "Olympic sport", pWord: "get Olympic status", note: "Môn thể thao Olympic" },
           { qWord: "from Germany", pWord: "a Dutchman", note: "Quốc tịch Đức / người Hà Lan" }
         ],
-        vocab: [{ word: "inflatable", type: "adj", ipa: "/ɪnˈfleɪ.tə.bəl/", def: "Bơm hơi", ex: "Inflatable mattress.", viEx: "Đệm hơi." }]
+        vocab: [
+          { word: "soft surface", type: "Cụm danh từ", ipa: "/sɔːft ˈsɝːfɪs/", def: "bề mặt mềm", ex: "Bossaball is played on a soft surface.", viEx: "Bossaball được chơi trên một bề mặt mềm." },
+          { word: "inflatable pitch", type: "Cụm danh từ", ipa: "/ɪnˈfleɪtəbl pɪtʃ/", def: "sân bơm hơi", ex: "Played on an inflatable pitch with a trampoline.", viEx: "Chơi trên sân bơm hơi có bạt nhún lò xo." },
+          { word: "trampoline", type: "Danh từ", ipa: "/ˈtræmpəliːn/", def: "tấm bạt lò xo", ex: "With a trampoline in the middle.", viEx: "Có bạt lò xo ở chính giữa." },
+          { word: "Dutchman", type: "Danh từ", ipa: "/ˈdʌtʃmən/", def: "người Hà Lan", ex: "Won by a Dutchman, Iepe Rubingh.", viEx: "Giành chiến thắng bởi người Hà Lan Iepe Rubingh." },
+          { word: "taken so seriously", type: "Cụm động từ", ipa: "/ˈteɪkən soʊ ˈsɪriəsli/", def: "được coi là rất nghiêm túc", ex: "Surprising that it is called a sport and taken so seriously.", viEx: "Đáng ngạc nhiên khi nó được gọi là môn thể thao và xem trọng đến vậy." }
+        ]
       },
       {
         id: 9,
@@ -487,7 +653,13 @@
           { qWord: "choose easier route", pWord: "take the more difficult one", note: "Chọn đường dễ / đi lối khó" },
           { qWord: "are similar", pWord: "more similarities than differences", note: "Tương đồng nhau" }
         ],
-        vocab: [{ word: "humility", type: "n", ipa: "/hjuːˈmɪl.ə.ti/", def: "Sự khiêm tốn", ex: "Practice humility.", viEx: "Rèn luyện đức khiêm nhường." }]
+        vocab: [
+          { word: "strict rules", type: "Cụm danh từ", ipa: "/strɪkt ruːlz/", def: "các quy tắc nghiêm ngặt", ex: "In the Yamakasi, there were strict rules.", viEx: "Trong nhóm Yamakasi có những quy tắc rất nghiêm ngặt." },
+          { word: "arrive on time", type: "Cụm động từ", ipa: "/əˈraɪv ɑːn taɪm/", def: "đến đúng giờ", ex: "Members had to arrive on time.", viEx: "Các thành viên phải đến đúng giờ." },
+          { word: "make excuses", type: "Cụm động từ", ipa: "/meɪk ɪkˈskjuːsɪz/", def: "viện cớ, bào chữa", ex: "Not allowed to complain or make excuses.", viEx: "Không được phép phàn nàn hay viện cớ." },
+          { word: "refused to teach", type: "Cụm động từ", ipa: "/rɪˈfjuːzd tə tiːtʃ/", def: "từ chối dạy", ex: "The founder refused to teach people how to do moves.", viEx: "Người sáng lập từ chối dạy các động tác." },
+          { word: "similarities", type: "Danh từ số nhiều", ipa: "/ˌsɪməˈlerətiz/", def: "những điểm tương đồng", ex: "More similarities than differences between the two.", viEx: "Nhiều điểm tương đồng hơn là khác biệt giữa hai môn." }
+        ]
       },
       {
         id: 10,
@@ -510,7 +682,14 @@
           { qWord: "excellent way", pWord: "the best way", note: "Phương thức xuất sắc / tốt nhất" },
           { qWord: "get famous easily", pWord: "not for those who want to be famous", note: "Dễ nổi tiếng" }
         ],
-        vocab: [{ word: "trending", type: "adj", ipa: "/ˈtren.dɪŋ/", def: "Thịnh hành", ex: "Trending topics.", viEx: "Chủ đề xu hướng." }]
+        vocab: [
+          { word: "special skills", type: "Cụm danh từ", ipa: "/ˈspeʃəl skɪlz/", def: "kỹ năng đặc biệt", ex: "In the past, you needed a talent.", viEx: "Trước đây, bạn cần có tài năng đặc biệt." },
+          { word: "own blog", type: "Cụm danh từ", ipa: "/oʊn blɑːɡ/", def: "blog cá nhân", ex: "Creating your own blog is the best way to become famous.", viEx: "Tạo blog cá nhân là cách tốt nhất để nổi tiếng." },
+          { word: "current affairs", type: "Cụm danh từ", ipa: "/ˌkɝːənt əˈferz/", def: "thời sự", ex: "News and current affairs.", viEx: "Tin tức và các vấn đề thời sự." },
+          { word: "raising money", type: "Cụm động từ", ipa: "/ˈreɪzɪŋ ˈmʌni/", def: "gây quỹ", ex: "Raising money for a charity.", viEx: "Gây quỹ cho một tổ chức từ thiện." },
+          { word: "good platform", type: "Cụm danh từ", ipa: "/ɡʊd ˈplætfɔːrm/", def: "nền tảng tốt", ex: "Facebook is a good platform to make money.", viEx: "Facebook là nền tảng tốt để kiếm tiền." },
+          { word: "achieve the fame", type: "Cụm động từ", ipa: "/əˈtʃiːv ðə feɪm/", def: "đạt được sự nổi tiếng", ex: "You can achieve the fame you've always dreamed of.", viEx: "Bạn có thể đạt được danh tiếng mà mình hằng mơ ước." }
+        ]
       },
       {
         id: 11,
@@ -538,7 +717,10 @@
           { qWord: "useful work", pWord: "important work", note: "Công việc hữu ích, quan trọng" },
           { qWord: "get many advantages", pWord: "benefit from that fame", note: "Thu lợi / hưởng ưu thế" }
         ],
-        vocab: [{ word: "commemorate", type: "v", ipa: "/kəˈmem.ə.reɪt/", def: "Tưởng niệm", ex: "Commemorate heroes.", viEx: "Tưởng niệm các anh hùng." }]
+        vocab: [
+          { word: "commemorate", type: "Động từ", ipa: "/kəˈmem.ə.reɪt/", def: "tưởng niệm, làm lễ kỷ niệm", ex: "Ceremony to commemorate him at the railway station.", viEx: "Buổi lễ tưởng niệm chú chó tại nhà ga." },
+          { word: "substantial", type: "Tính từ", ipa: "/səbˈstæn.ʃəl/", def: "đáng kể, to lớn", ex: "The zoo made substantial amounts of money.", viEx: "Sở thú đã kiếm được khoản tiền đáng kể." }
+        ]
       },
       {
         id: 12,
@@ -561,7 +743,10 @@
           { qWord: "influences friendships", pWord: "choose friends because of", note: "Ảnh hưởng tới việc chọn bạn" },
           { qWord: "less likely to suffer from", pWord: "have fewer problems", note: "Ít nguy cơ mắc phải" }
         ],
-        vocab: [{ word: "convenience", type: "n", ipa: "/kənˈviː.ni.əns/", def: "Sự thuận tiện", ex: "For convenience.", viEx: "Vì sự tiện lợi." }]
+        vocab: [
+          { word: "convenience", type: "Danh từ", ipa: "/kənˈviː.ni.əns/", def: "sự thuận tiện, tiện lợi", ex: "Young children choose friends because of convenience.", viEx: "Trẻ nhỏ chọn bạn vì sự thuận tiện." },
+          { word: "geographically mobile", type: "Cụm tính từ", ipa: "/ˌdʒiː.əˈɡræf.ɪ.kəl.i ˈmoʊ.bəl/", def: "dễ dàng dịch chuyển địa lý", ex: "People are more geographically mobile nowadays.", viEx: "Ngày nay con người có xu hướng dịch chuyển địa lý nhiều hơn." }
+        ]
       },
       {
         id: 13,
@@ -583,7 +768,9 @@
           { qWord: "nudged", pWord: "gently pushed", note: "Huých nhẹ / đẩy khẽ" },
           { qWord: "not lose hope", pWord: "don't give up", note: "Không đánh mất hy vọng / đừng từ bỏ" }
         ],
-        vocab: [{ word: "nudge", type: "v", ipa: "/nʌdʒ/", def: "Huých nhẹ", ex: "Nudged gently.", viEx: "Huých nhẹ." }]
+        vocab: [
+          { word: "nudge", type: "Động từ", ipa: "/nʌdʒ/", def: "huých nhẹ, đẩy khẽ", ex: "A dolphin nudged Joey Trevino gently.", viEx: "Một chú cá heo đã huých nhẹ Joey Trevino." }
+        ]
       },
       {
         id: 14,
@@ -605,7 +792,9 @@
           { qWord: "not always separate", pWord: "several species live together", note: "Không chia tách / sống cùng nhau" },
           { qWord: "copies natural habitat", pWord: "functional forest", note: "Tái hiện môi trường tự nhiên" }
         ],
-        vocab: [{ word: "reintroduce", type: "v", ipa: "/ˌriː.ɪn.trəˈdʒuːs/", def: "Tái thả tự nhiên", ex: "Reintroduce animals.", viEx: "Tái thả động vật." }]
+        vocab: [
+          { word: "functional forest", type: "Cụm danh từ", ipa: "/ˈfʌŋk.ʃən.əl ˈfɔːr.ɪst/", def: "khu rừng chức năng mô phỏng", ex: "A functional forest called the Hutan trail.", viEx: "Một khu rừng chức năng mang tên đường mòn Hutan." }
+        ]
       },
       {
         id: 15,
@@ -631,7 +820,9 @@
           { qWord: "formally remembered", pWord: "ceremony to commemorate", note: "Lễ kỷ niệm chính thức" },
           { qWord: "souvenirs made", pWord: "selling toys and products", note: "Bán đồ lưu niệm" }
         ],
-        vocab: [{ word: "substantial", type: "adj", ipa: "/səbˈstæn.ʃəl/", def: "Đáng kể", ex: "Substantial profits.", viEx: "Lợi nhuận đáng kể." }]
+        vocab: [
+          { word: "souvenir", type: "Danh từ", ipa: "/ˌsuː.vəˈnɪr/", def: "đồ lưu niệm", ex: "Selling toys, candy and other souvenirs.", viEx: "Bán đồ chơi, kẹo và các đồ lưu niệm khác." }
+        ]
       },
       {
         id: 16,
@@ -655,7 +846,9 @@
           { qWord: "famous as an author", pWord: "published recipes, instant success", note: "Nổi tiếng nhờ xuất bản sách" },
           { qWord: "enjoyment rather than learning", pWord: "entertainment than education", note: "Giải trí hơn là giáo dục" }
         ],
-        vocab: [{ word: "influential", type: "adj", ipa: "/ˌɪn.fluˈen.ʃəl/", def: "Có tầm ảnh hưởng", ex: "Influential show.", viEx: "Chương trình có tầm ảnh hưởng." }]
+        vocab: [
+          { word: "influential", type: "Tính từ", ipa: "/ˌɪn.fluˈen.ʃəl/", def: "có tầm ảnh hưởng", ex: "The most influential show was Jamie Oliver's 15 Minute Meals.", viEx: "Chương trình có ảnh hưởng nhất là bữa ăn 15 phút của Jamie Oliver." }
+        ]
       },
       {
         id: 17,
@@ -678,7 +871,9 @@
           { qWord: "sell what you don't need", pWord: "sell unwanted items", note: "Bán đồ không còn cần dùng" },
           { qWord: "gifts for winter celebrations", pWord: "Christmas gifts for festive season", note: "Quà tặng lễ hội mùa đông" }
         ],
-        vocab: [{ word: "bargain", type: "n", ipa: "/ˈbɑː.ɡɪn/", def: "Món hời", ex: "Bought at a bargain.", viEx: "Mua được giá hời." }]
+        vocab: [
+          { word: "bargain", type: "Danh từ", ipa: "/ˈbɑːr.ɡɪn/", def: "món hời, giá rẻ bất ngờ", ex: "Get something really special at a bargain price.", viEx: "Mua được thứ đặc biệt với giá hời." }
+        ]
       },
       {
         id: 18,
@@ -700,7 +895,9 @@
           { qWord: "convenient for working people", pWord: "don't have to miss work to go to classes", note: "Tiện lợi cho người đang đi làm" },
           { qWord: "practical issues like when classes held", pWord: "different places and at different times", note: "Thời gian và địa điểm tổ chức" }
         ],
-        vocab: [{ word: "apprenticeship", type: "n", ipa: "/əˈpren.tɪs.ʃɪp/", def: "Học nghề", ex: "Serve an apprenticeship.", viEx: "Thời gian học việc." }]
+        vocab: [
+          { word: "apprenticeship", type: "Danh từ", ipa: "/əˈpren.tɪs.ʃɪp/", def: "sự học nghề, chế độ thực tập", ex: "Apprenticeships were a common way of learning in the past.", viEx: "Học nghề từng là cách học tập phổ biến trong quá khứ." }
+        ]
       }
     ];
 
@@ -710,6 +907,19 @@
     let synth = window.speechSynthesis;
     let utterance = null;
     let savedRange = null;
+
+    // Phát âm từ vựng đơn lẻ với giọng AmE
+    function speakWord(text) {
+      if (!synth) {
+        alert("Trình duyệt không hỗ trợ phát âm!");
+        return;
+      }
+      synth.cancel();
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = 'en-US';
+      u.rate = 0.9;
+      synth.speak(u);
+    }
 
     function initSidebar() {
       const menuContainer = document.getElementById('activity-menu');
@@ -728,10 +938,10 @@
         const btn = document.createElement('button');
         btn.id = `nav-btn-${idx}`;
         btn.onclick = () => selectActivity(idx);
-        btn.className = `w-full text-left px-3 py-2 rounded-lg font-medium transition flex items-center justify-between gap-1 text-slate-700 hover:bg-slate-100 ${idx === currentActIndex ? 'bg-indigo-600 !text-white shadow-sm font-bold' : ''}`;
+        btn.className = `w-full text-left px-2.5 py-1.5 rounded-lg font-medium transition flex items-center justify-between gap-1 text-slate-700 hover:bg-slate-100 ${idx === currentActIndex ? 'bg-indigo-600 !text-white shadow-sm font-bold' : ''}`;
         btn.innerHTML = `
           <span class="truncate">${act.title}</span>
-          <i class="fa-solid fa-chevron-right text-[10px] opacity-70"></i>
+          <i class="fa-solid fa-chevron-right text-[9px] opacity-70"></i>
         `;
         menuContainer.appendChild(btn);
       });
@@ -749,32 +959,34 @@
 
       document.querySelectorAll('#activity-menu button').forEach((btn, idx) => {
         if (idx === index) {
-          btn.className = "w-full text-left px-3 py-2 rounded-lg font-bold transition flex items-center justify-between gap-1 bg-indigo-600 text-white shadow-sm";
+          btn.className = "w-full text-left px-2.5 py-1.5 rounded-lg font-bold transition flex items-center justify-between gap-1 bg-indigo-600 text-white shadow-sm";
         } else {
-          btn.className = "w-full text-left px-3 py-2 rounded-lg font-medium transition flex items-center justify-between gap-1 text-slate-700 hover:bg-slate-100";
+          btn.className = "w-full text-left px-2.5 py-1.5 rounded-lg font-medium transition flex items-center justify-between gap-1 text-slate-700 hover:bg-slate-100";
         }
       });
 
       const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('sidebar-overlay');
       if (!sidebar.classList.contains('-translate-x-full')) {
-        toggleSidebar();
+        sidebar.classList.add('-translate-x-full');
+        overlay.classList.add('hidden');
       }
 
       // Render Passage (Cột trái)
       const pContainer = document.getElementById('passage-container');
       pContainer.innerHTML = `
         <div class="text-center pb-2 border-b border-slate-100">
-          <h2 class="text-lg md:text-xl font-extrabold text-slate-900 tracking-tight">${act.title}</h2>
+          <h2 class="text-base md:text-lg font-extrabold text-slate-900 tracking-tight">${act.title}</h2>
           <span class="text-[11px] text-indigo-600 uppercase tracking-widest font-semibold">${act.part}</span>
         </div>
       `;
 
       act.passage.forEach((p) => {
         const block = document.createElement('div');
-        block.className = "passage-block p-2.5 rounded-xl transition hover:bg-slate-50/80 border border-transparent hover:border-slate-100";
+        block.className = "passage-block p-2 rounded-lg transition hover:bg-slate-50/80 border border-transparent hover:border-slate-100";
         block.innerHTML = `
           <p class="en-text font-serif leading-relaxed">${p.en}</p>
-          <div class="vn-text ${isTranslated ? '' : 'hidden'} mt-2 p-2.5 bg-indigo-50/70 border-l-4 border-indigo-500 rounded-r-lg text-xs md:text-sm text-indigo-950 font-sans">
+          <div class="vn-text ${isTranslated ? '' : 'hidden'} mt-2 p-2 bg-indigo-50/70 border-l-4 border-indigo-500 rounded-r-md text-xs text-indigo-950 font-sans">
             <span class="font-bold text-[10px] uppercase tracking-wide text-indigo-700 block mb-0.5">Bản dịch tiếng Việt:</span>
             ${p.vi}
           </div>
@@ -792,15 +1004,15 @@
       qContainer.innerHTML = '';
       act.questions.forEach((q, qIdx) => {
         const card = document.createElement('div');
-        card.className = "question-card p-3 rounded-xl border border-slate-200 bg-white transition";
+        card.className = "question-card p-2.5 rounded-lg border border-slate-200 bg-white transition";
         card.setAttribute('data-qid', qIdx);
 
         card.innerHTML = `
-          <div class="q-title block text-xs md:text-sm font-semibold text-slate-800 leading-snug mb-2">
+          <div class="q-title block text-xs font-semibold text-slate-800 leading-snug mb-1.5">
             ${q.q}
           </div>
-          <input type="text" id="ans-${qIdx}" class="w-full px-3 py-1.5 text-xs md:text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none transition" placeholder="Nhập đáp án...">
-          <div id="fb-${qIdx}" class="hidden mt-2 p-2.5 rounded-lg text-xs leading-relaxed"></div>
+          <input type="text" id="ans-${qIdx}" class="w-full px-2.5 py-1 text-xs border border-slate-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none transition" placeholder="Nhập đáp án...">
+          <div id="fb-${qIdx}" class="hidden mt-1.5 p-2 rounded-md text-xs leading-relaxed"></div>
         `;
         qContainer.appendChild(card);
       });
@@ -812,8 +1024,8 @@
         act.paraphraseTable.forEach(row => {
           tableRows += `
             <tr class="border-b border-slate-200 hover:bg-indigo-50/40 transition">
-              <td class="p-2.5 font-medium text-slate-800 align-top border-r border-slate-200 w-1/2">${row.qWord}</td>
-              <td class="p-2.5 text-indigo-900 font-semibold align-top w-1/2">
+              <td class="p-2 font-medium text-slate-800 align-top border-r border-slate-200 w-1/2">${row.qWord}</td>
+              <td class="p-2 text-indigo-900 font-semibold align-top w-1/2">
                 ${row.pWord}${row.note ? `<div class="text-[10px] text-slate-500 font-normal italic mt-0.5">${row.note}</div>` : ''}
               </td>
             </tr>
@@ -822,18 +1034,18 @@
       }
 
       pTable.innerHTML = `
-        <div class="flex items-center justify-between mb-2">
-          <h3 class="font-bold text-slate-800 text-xs md:text-sm flex items-center gap-1.5">
+        <div class="flex items-center justify-between mb-1.5">
+          <h3 class="font-bold text-slate-800 text-xs flex items-center gap-1.5">
             <i class="fa-solid fa-table-list text-indigo-600"></i> Bảng Paraphrase (Keywords vs Passage)
           </h3>
           <span class="text-[10px] bg-indigo-50 text-indigo-700 px-2 py-0.5 rounded font-medium">Đối chiếu</span>
         </div>
-        <div class="overflow-x-auto rounded-xl border border-slate-200 shadow-sm bg-white">
+        <div class="overflow-x-auto rounded-lg border border-slate-200 shadow-sm bg-white">
           <table class="w-full text-xs text-left">
             <thead class="bg-slate-100 text-slate-900 font-bold border-b border-slate-200">
               <tr>
-                <th class="p-2.5 border-r border-slate-200 w-1/2">Keywords in Questions</th>
-                <th class="p-2.5 w-1/2">Similar words in Passage</th>
+                <th class="p-2 border-r border-slate-200 w-1/2">Keywords in Questions</th>
+                <th class="p-2 w-1/2">Similar words in Passage</th>
               </tr>
             </thead>
             <tbody>
@@ -843,12 +1055,12 @@
         </div>
       `;
 
-      // Render Vocab (Cột phải - Tab 2)
+      // Render Vocab kèm nút LOA PHÁT ÂM (Cột phải - Tab 2)
       const vContainer = document.getElementById('vocab-content');
       vContainer.innerHTML = `
-        <div class="flex items-center justify-between mb-2">
-          <h3 class="font-bold text-slate-800 text-xs md:text-sm flex items-center gap-1.5">
-            <i class="fa-solid fa-spell-check text-indigo-600"></i> Từ Vựng Cốt Lõi
+        <div class="flex items-center justify-between mb-1.5">
+          <h3 class="font-bold text-slate-800 text-xs flex items-center gap-1.5">
+            <i class="fa-solid fa-spell-check text-indigo-600"></i> Từ Vựng Cốt Lõi (Phát Âm Chuẩn AmE)
           </h3>
           <span class="text-[10px] bg-indigo-50 text-indigo-700 px-2 py-0.5 rounded font-medium">${act.vocab ? act.vocab.length : 0} từ</span>
         </div>
@@ -857,14 +1069,23 @@
       if (act.vocab && act.vocab.length > 0) {
         act.vocab.forEach(v => {
           const vBox = document.createElement('div');
-          vBox.className = "p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs space-y-1";
+          vBox.className = "p-2 rounded-lg bg-slate-50 border border-slate-200 text-xs space-y-1";
+          
+          const safeWord = v.word.replace(/'/g, "\\'");
+
           vBox.innerHTML = `
             <div class="flex items-center justify-between">
-              <span class="font-bold text-indigo-900">${v.word}</span>
-              <span class="text-[10px] bg-slate-200 text-slate-700 px-1.5 py-0.5 rounded font-mono">${v.type}${v.ipa}</span>
+              <div class="flex items-center gap-1.5">
+                <span class="font-bold text-indigo-900 text-sm">${v.word}</span>
+                <button onclick="speakWord('${safeWord}')" class="w-6 h-6 rounded-full bg-indigo-100 hover:bg-indigo-200 text-indigo-700 flex items-center justify-center transition shadow-xs" title="Bấm để nghe phát âm AmE">
+                  <i class="fa-solid fa-volume-high text-[11px]"></i>
+                </button>
+              </div>
+              <span class="text-[10px] bg-slate-200 text-slate-700 px-1.5 py-0.5 rounded font-mono font-medium">${v.type} \vert{} AmE:${v.ipa}</span>
             </div>
             <p class="text-slate-700"><span class="font-semibold text-slate-900">Nghĩa:</span> ${v.def}</p>
-            <p class="text-slate-500 italic">"${v.ex}" (${v.viEx})</p>
+            <p class="text-slate-500 italic">"${v.ex}"</p>
+            <p class="text-slate-500 text-[11px]">→ ${v.viEx}</p>
           `;
           vContainer.appendChild(vBox);
         });
@@ -874,7 +1095,16 @@
     }
 
     function toggleSidebar() {
-      document.getElementById('sidebar').classList.toggle('-translate-x-full');
+      const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('sidebar-overlay');
+      const isClosed = sidebar.classList.contains('-translate-x-full');
+      if (isClosed) {
+        sidebar.classList.remove('-translate-x-full');
+        overlay.classList.remove('hidden');
+      } else {
+        sidebar.classList.add('-translate-x-full');
+        overlay.classList.add('hidden');
+      }
     }
 
     function switchTab(tab) {
@@ -888,13 +1118,13 @@
       if (tab === 'quiz') {
         qTab.classList.remove('hidden');
         vTab.classList.add('hidden');
-        qBtn.className = "flex-1 py-3 px-2 text-center font-bold text-xs md:text-sm border-b-2 border-indigo-600 text-indigo-700 flex items-center justify-center gap-1.5 transition";
-        vBtn.className = "flex-1 py-3 px-2 text-center font-bold text-xs md:text-sm border-b-2 border-transparent text-slate-500 hover:text-slate-700 flex items-center justify-center gap-1.5 transition";
+        qBtn.className = "flex-1 py-2.5 px-2 text-center font-bold text-xs border-b-2 border-indigo-600 text-indigo-700 flex items-center justify-center gap-1 transition";
+        vBtn.className = "flex-1 py-2.5 px-2 text-center font-bold text-xs border-b-2 border-transparent text-slate-500 hover:text-slate-700 flex items-center justify-center gap-1 transition";
       } else {
         vTab.classList.remove('hidden');
         qTab.classList.add('hidden');
-        vBtn.className = "flex-1 py-3 px-2 text-center font-bold text-xs md:text-sm border-b-2 border-indigo-600 text-indigo-700 flex items-center justify-center gap-1.5 transition";
-        qBtn.className = "flex-1 py-3 px-2 text-center font-bold text-xs md:text-sm border-b-2 border-transparent text-slate-500 hover:text-slate-700 flex items-center justify-center gap-1.5 transition";
+        vBtn.className = "flex-1 py-2.5 px-2 text-center font-bold text-xs border-b-2 border-indigo-600 text-indigo-700 flex items-center justify-center gap-1 transition";
+        qBtn.className = "flex-1 py-2.5 px-2 text-center font-bold text-xs border-b-2 border-transparent text-slate-500 hover:text-slate-700 flex items-center justify-center gap-1 transition";
       }
     }
 
@@ -905,7 +1135,7 @@
         if (isTranslated) el.classList.remove('hidden');
         else el.classList.add('hidden');
       });
-      document.getElementById('trans-btn-text').textContent = isTranslated ? "Ẩn Bản Dịch" : "Xem Bản Dịch";
+      document.getElementById('trans-btn-text').textContent = isTranslated ? "Ẩn Dịch" : "Bản Dịch";
     }
 
     // ==========================================
@@ -930,20 +1160,20 @@
           savedRange = range.cloneRange();
           const rect = range.getBoundingClientRect();
           const pRect = leftSection.getBoundingClientRect();
-          leftHlToolbar.style.top = `${rect.top - pRect.top - 42}px`;
-          leftHlToolbar.style.left = `${Math.max(10, rect.left - pRect.left + (rect.width / 2) - 100)}px`;
+          leftHlToolbar.style.top = `${rect.top - pRect.top - 38}px`;
+          leftHlToolbar.style.left = `${Math.max(10, rect.left - pRect.left + (rect.width / 2) - 80)}px`;
           leftHlToolbar.classList.remove('hidden');
           return;
         }
 
-        // Bôi đen ở cột phải (câu hỏi / đề bài, bỏ qua ô nhập text)
+        // Bôi đen ở cột phải (câu hỏi, bỏ qua ô input)
         if (rightSection.contains(container) && e.target.tagName !== 'INPUT') {
           hideToolbars();
           savedRange = range.cloneRange();
           const rect = range.getBoundingClientRect();
           const pRect = rightSection.getBoundingClientRect();
-          rightHlToolbar.style.top = `${rect.top - pRect.top - 42}px`;
-          rightHlToolbar.style.left = `${Math.max(10, rect.left - pRect.left + (rect.width / 2) - 100)}px`;
+          rightHlToolbar.style.top = `${rect.top - pRect.top - 38}px`;
+          rightHlToolbar.style.left = `${Math.max(10, rect.left - pRect.left + (rect.width / 2) - 80)}px`;
           rightHlToolbar.classList.remove('hidden');
           return;
         }
@@ -1027,7 +1257,7 @@
       hideToolbars();
     }
 
-    // TTS AI Reader
+    // TTS AI Reader cho bài đọc
     function toggleAudio() {
       if (!synth) {
         alert("Trình duyệt không hỗ trợ Web Speech AI!");
@@ -1090,8 +1320,8 @@
 
         if (isCorrect && userVal !== '') {
           correctCount++;
-          input.className = "w-full px-3 py-1.5 text-xs md:text-sm border-2 border-emerald-500 bg-emerald-50 text-emerald-900 rounded-lg focus:outline-none";
-          fb.className = "mt-2 p-2.5 rounded-lg text-xs leading-relaxed bg-emerald-50 border border-emerald-200 text-emerald-950";
+          input.className = "w-full px-2.5 py-1 text-xs border-2 border-emerald-500 bg-emerald-50 text-emerald-900 rounded-md focus:outline-none";
+          fb.className = "mt-1.5 p-2 rounded-md text-xs leading-relaxed bg-emerald-50 border border-emerald-200 text-emerald-950";
           fb.innerHTML = `
             <div class="font-bold flex items-center gap-1 text-emerald-700">
               <i class="fa-solid fa-circle-check"></i> Chính xác!
@@ -1100,8 +1330,8 @@
             <div class="mt-0.5"><span class="font-semibold text-slate-700">Giải thích:</span> ${q.exp}</div>
           `;
         } else {
-          input.className = "w-full px-3 py-1.5 text-xs md:text-sm border-2 border-rose-500 bg-rose-50 text-rose-900 rounded-lg focus:outline-none";
-          fb.className = "mt-2 p-2.5 rounded-lg text-xs leading-relaxed bg-rose-50 border border-rose-200 text-rose-950";
+          input.className = "w-full px-2.5 py-1 text-xs border-2 border-rose-500 bg-rose-50 text-rose-900 rounded-md focus:outline-none";
+          fb.className = "mt-1.5 p-2 rounded-md text-xs leading-relaxed bg-rose-50 border border-rose-200 text-rose-950";
           fb.innerHTML = `
             <div class="font-bold flex items-center gap-1 text-rose-700">
               <i class="fa-solid fa-circle-xmark"></i> Chưa chính xác!
@@ -1126,9 +1356,9 @@
       act.questions.forEach((q, idx) => {
         const input = document.getElementById(`ans-${idx}`);
         input.value = '';
-        input.className = "w-full px-3 py-1.5 text-xs md:text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none transition";
+        input.className = "w-full px-2.5 py-1 text-xs border border-slate-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none transition";
         const fb = document.getElementById(`fb-${idx}`);
-        fb.className = "hidden mt-2 p-2.5 rounded-lg text-xs leading-relaxed";
+        fb.className = "hidden mt-1.5 p-2 rounded-md text-xs leading-relaxed";
         fb.innerHTML = '';
       });
       document.getElementById('score-badge').classList.add('hidden');
